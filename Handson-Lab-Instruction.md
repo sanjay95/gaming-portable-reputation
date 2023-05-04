@@ -147,9 +147,31 @@ const {
     { accessToken: cloudWalletAccessToken }
   )
 
+// Final call to Affinidi API from Issuer for signing
+//pages/api/clients/cloud-wallet-client.ts
+signCredential: async (input: { vc: VerifiableCredential }, options: Options): Promise<{ vc: VerifiableCredential }> => {
+    const {
+      data: { signedCredential: vc },
+    } = await axios<{ signedCredential: VerifiableCredential }>(
+      `${cloudWalletApiUrl}/v1/wallet/sign-credential`,
+      {
+        method: 'POST',
+        headers: {
+          'Api-Key': apiKeyHash,
+          Authorization: options.accessToken,
+        },
+        data: {
+          unsignedCredential: input.vc,
+        },
+      }
+    )
+
+    return { vc }
+  }
 
 ```
-Storage
+### `Storage`
+
 
 ```typescript
 //Store signed credentials in user wallet
@@ -159,6 +181,24 @@ Storage
       headers: createCloudWalletAuthenticationHeaders(),
       data: { vc },
     })
+
+//Final call to Affinidi API from holder to store the given VC in wallet
+//pages/api/clients/cloud-wallet-client.ts
+  storeCredentials: async (
+    input: { vcs: VerifiableCredential[] },
+    options: Options
+  ): Promise<void> => {
+    await axios<void>(`${cloudWalletApiUrl}/v1/wallet/credentials`, {
+      method: 'POST',
+      headers: {
+        'Api-Key': apiKeyHash,
+        Authorization: options.accessToken,
+      },
+      data: {
+        data: input.vcs,
+      },
+    })
+  }
 
 ```
 
