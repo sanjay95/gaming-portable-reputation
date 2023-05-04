@@ -107,10 +107,10 @@ There will be total three types of Verifiable credentials created.
 - browse the application at http://localhost:3000.
 - click on JOIN OUR TEAM button 
 - enter email and provide the OTP
-- first login will prompt to complete profile (here Studio profile VC will be issued to logged in user wallet)
+- first login will prompt to complete profile (here Studio profile VC will be issued to logged-in user's wallet)
 
 As soon as you save profile, your wallet will be active with profile VC. 
-You can browset [wallet credentials](http://localhost:3000/wallet) to view the credentials issued to you and stored in our wallet. 
+You can browse [wallet credentials](http://localhost:3000/wallet) to view the credentials issued to you and stored in your wallet. 
 
 ### `Issuance` 
 ```typescript
@@ -207,10 +207,10 @@ signCredential: async (input: { vc: VerifiableCredential }, options: Options): P
 
 <details>
   <summary> Lab 2 : </summary>
-- CLick on first game [Board tennis](http://localhost:3000/Games/game1). This is simulated game where game level and no of hours played will keep increasing simulating hours of play.
+- Click on first game [Board tennis](http://localhost:3000/Games/game1). This is simulated game where game level and no. of hours played will keep increasing which simulates actual game hours.
 - User has option to save the stats. Current stats will be issued as GameReputation Verifiable credentials to user wallet
 - User may wish to play second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be promted to import VC based on his logged in status. if not logged-in, user may login based on message displayed on screen
-- if user wishes to import VCs and agrees to share with Screen tesnnis game, his settings and stats from first game will utulized and second game may honor the stats and offer to play from advanced level
+- if user wishes to import VCs and agrees to share with Screen tennis game, his settings and stats from first game will be utilizied and second game may accept the stats and offer users to play game from advanced level.
 
 </details>
 
