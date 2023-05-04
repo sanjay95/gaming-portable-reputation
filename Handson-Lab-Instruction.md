@@ -48,6 +48,9 @@ Initially the Default Project will be set as your Active Project.
 Either create a new project or use the default project. 
 To get the project details. click on default project as below.
 
+<img width="1075" alt="image" src="https://user-images.githubusercontent.com/1314582/236203164-f3a74bb0-be58-4daf-a07b-8beb24ec8bc7.png">
+
+
 
 
 &nbsp;
