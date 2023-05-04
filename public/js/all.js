@@ -942,13 +942,18 @@ Pong = {
   
   }; // Pong
   console.log("Hello from init")
-Game.ready(function () {
+  window.pongStart = () => {
     var pong = Game.start("game", Pong, {
         sound: false,
         stats: true,
         footprints: true,
         predictions: true,
     });
-
+  
     window.pongGame = pong;
+  }
+  
+Game.ready(function () {
+  window.pongStart();
 });
+

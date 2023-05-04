@@ -283,6 +283,14 @@ const Game2: FC = () => {
         return () => clearInterval(interval);
     }, []);
 
+    
+    useEffect(() => {
+        const pong = (window as any).pongStart
+        if (pong) {
+            pong();
+        }
+    }, []);
+
     return (
         <S.Container style={{ backgroundColor: "white", paddingLeft: "20rem" }}>
             <div style={{ paddingBottom: "400px" }} className="grid grid-flow-row-dense grid-cols-12">
