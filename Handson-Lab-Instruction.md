@@ -299,6 +299,54 @@ const { vc } = await cloudWalletClient.signCredential(
     - If user gives consent to share VC, a `Share RESPONSE Token` is generated using the user's wallet credentials. This token is passed to the game.
     - The game application validates the `RESPONSE` token against the `REQUEST` Token. If the token is valid, it will utilize the data from VC to offer a personalized gaming experience 
 
+#### `Create share request token`
+
+```typescript
+//pages/Games/game2/index.page.tsx
+ const vcTypes = ["AffinidiStudioProfileVC", "GameSettings","GameReputation"];
+ //verifier building share REQUEST token of two VC type, studio and game settings
+  const reqToken = await GenerateRequestToken(vcTypes);
+//pages/Games/tokenOperations.ts
+  const response = await axios(
+            '/api/verifier/share-request-token',
+            {
+                method: 'POST',
+                headers: createCloudWalletAuthenticationHeaders(),
+                data: { credentialsType: vcTypes }
+            }
+
+        )
+
+//pages/api/verifier/share-request-token.page.ts
+ const {
+    wallet: { accessToken: cloudWalletAccessToken },
+  } = await iamClient.authenticateCloudWallet({ did: projectDid ?? '' })
+
+  const { shareRequestToken } = await cloudWalletClient.createShareRequestToken(
+    { credentialsType },
+    { accessToken: cloudWalletAccessToken }
+  );
+
+
+//pages/api/clients/cloud-wallet-client.ts
+    const types = input.credentialsType.map((i)=>({type:[i]}))
+      console.log('requested credentials types', types  );
+     const {  data: shareRequestToken } = await axios<string>(
+      `${cloudWalletApiUrl}/v1/wallet/credential-share-token/generate-request-token`,
+      {
+        method: 'POST',
+        headers: {
+          'Api-Key': apiKeyHash,
+          Authorization: options.accessToken,
+        },
+        data: {
+          requirements: types,      
+        },
+      }
+    )
+
+```
+
   </details>
 
   ---
