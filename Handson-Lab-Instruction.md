@@ -211,7 +211,58 @@ signCredential: async (input: { vc: VerifiableCredential }, options: Options): P
 ## `Issuance of game settings as VC`
 
 ```typescript
+//Game settings type
+//types/vc.ts
+type Preferences = {
+    gamename?: string
+    vcId?: string
+    nickname: string
+    themecolor: string
+    gamevolume: string
+}
+
+// Internal call to use game settings to issue as VC 
+//pages/Games/game1/components/SaveGamePreferences.tsx
+await axios(
+                `/api/game/export-preferences`,
+                {
+                    method: "POST",
+                    headers,
+                    data: preferences,
+                }
+            );
+
 //
+try {
+  // Getting access token of user wallet to store VC 
+  const accessToken = authenticateCloudWallet(req);
+  //creating Unsinged VC
+        const preferenceVc = await generatePreferencesVc(
+            holderDid.did,
+            preferences
+        );
+
+  //getting access token of Project's wallet to sign VC 
+        const {
+            wallet: { accessToken: cloudWalletAccessToken },
+          } = await iamClient.authenticateCloudWallet({ did: projectDid ?? '' })
+  //signing VC using project's credentials         
+        const { vc } = await cloudWalletClient.signCredential(
+            { vc: preferenceVc },
+            { accessToken: cloudWalletAccessToken }
+        );
+  //storing signed VC in user's wallet by calling to wallet client function 
+        await cloudWalletClient.storeCredentials(
+            {
+                vcs: [vc as VerifiableCredential],
+            },
+            { accessToken }
+        );
+
+        success = true;
+    } catch (e) {
+        console.error(e);
+    }            
 
 
 ```
