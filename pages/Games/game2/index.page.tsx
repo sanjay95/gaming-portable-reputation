@@ -36,13 +36,15 @@ export const hasPreferenceVC = async (): Promise<boolean> => {
 
 const ImportButton: FC<{
     setPreferences: (preferences: Preferences) => void
+
+    setReputation: (reputation: Reputation) => void
     setIsloading: (setIsloading: boolean) => void
-}> = ({ setPreferences, setIsloading }) => {
+}> = ({ setPreferences, setIsloading,setReputation }) => {
 
     const [openModal, setOpenModal] = useState(false);
     const [data, setData] = useState<VCShareStateType | undefined>();
     const [message, setMessage] = useState("");
-    const vcTypes = ["AffinidiStudioProfileVC", "GameSettings"];
+    const vcTypes = ["AffinidiStudioProfileVC", "GameSettings","GameReputation"];
 
     const handleShareVC = async (e: any) => {
         if (!data || !data?.requestToken || !openModal) {
@@ -64,6 +66,13 @@ const ImportButton: FC<{
             if (preferences) {
                 setPreferences(preferences.credentialSubject)
             }
+
+            const reputation = verifyShareResponseOutPut.suppliedCredentials.
+            filter((x) => x.type.includes("GameReputation"))
+            .pop();
+        if (reputation) {
+            setReputation(reputation.credentialSubject)
+        }
         }
 
         setIsloading(false)
@@ -123,8 +132,9 @@ const ImportButton: FC<{
 const Import: FC<{
     setPreferences: (preferences: Preferences) => void
     setIsloading: (setIsloading: boolean) => void
+    setReputation: (reputation: Reputation) => void
 }> = ({
-    setPreferences, setIsloading
+    setPreferences, setIsloading,setReputation
 }) => {
         const { authState, setAuthState } = useAuthContext()
         const [showImport, setShowImport] = useState(false)
@@ -164,7 +174,8 @@ const Import: FC<{
         // }
 
         return <ImportButton setPreferences={setPreferences}
-            setIsloading={setIsloading} />
+            setIsloading={setIsloading}
+            setReputation={setReputation} />
     }
 const Instructions: FC<ModalProps> = ({
     title,
@@ -241,7 +252,7 @@ const Game2: FC = () => {
         company: '4Vesta',
         genere: 'arcade',
         totalPlayedhours: .1,
-        //LAB2   score: 0,
+        //LAB2           score: 0,
         gameLevel: 1,
     })
     useEffect(() => {
@@ -252,7 +263,7 @@ const Game2: FC = () => {
                 ({
                     ...prevState,                    
                     gameLevel: prevState.gameLevel + 1,
-                    //LAB2   score: 0,
+                    //LAB2                       score: 0,
                     totalPlayedhours: (prevState.totalPlayedhours + Math.floor(Math.random() * 2))
 
                 }));
@@ -265,11 +276,15 @@ const Game2: FC = () => {
         <S.Container style={{ backgroundColor: "white", paddingLeft: "20rem" }}>
             <div style={{ paddingBottom: "400px" }} className="grid grid-flow-row-dense grid-cols-12">
                 <div className='col-span-6'>
-                    <div className="grid grid-flow-row-dense grid-cols-3">
+                    <div className="grid grid-flow-row-dense grid-cols-4">
                         <div>Alias: {preferences.nickname} </div>
                         <div>Game Level: {reputation.gameLevel}</div>
                         <div>Hours Played: {reputation.totalPlayedhours}</div>
-                        <div className='col-span-3'><canvas id='game' style={{ backgroundColor: preferences.themecolor || "black", contentVisibility: isMenuOpen ? "hidden" : "visible" }}>
+                        <div>
+                            {/*LAB2  Score: {reputation.score} */}
+                            </div>
+                       
+                        <div className='col-span-4'><canvas id='game' style={{ backgroundColor: preferences.themecolor || "black", contentVisibility: isMenuOpen ? "hidden" : "visible" }}>
                             <div id='unsupported'>
                                 Sorry, this example cannot be run because your browser does
                                 not support the &ltcanvas&gt element
@@ -289,7 +304,8 @@ const Game2: FC = () => {
                         />)}
 
                     {!preferences.nickname && <Import setPreferences={setPreferences}
-                        setIsloading={setIsloading} />
+                        setIsloading={setIsloading} 
+                        setReputation={setReputation}/>
                     }
                     {isloading && (<Container>
                         <Spinner />

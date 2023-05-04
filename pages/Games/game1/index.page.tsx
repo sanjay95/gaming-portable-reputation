@@ -168,7 +168,7 @@ const Game1: FC = () => {
                 ({
                     ...prevState,
                     gameLevel: prevState.gameLevel + 1,
-                    //LAB2   score: 0,
+                    //LAB2                      score: Math.floor(prevState.gameLevel+prevState.totalPlayedhours * 10),
                     totalPlayedhours: (prevState.totalPlayedhours + Math.floor(Math.random() * 2))
 
                 }));
@@ -181,11 +181,15 @@ const Game1: FC = () => {
         <S.Container style={{ backgroundColor: "white", paddingLeft: "20rem" }}>
             <div style={{ paddingBottom: "400px" }} className="grid grid-flow-row-dense grid-cols-12">
                 <div className='col-span-6'>
-                    <div className="grid grid-flow-row-dense grid-cols-3">
-                        <div>Alias: {preferences.nickname} </div>
+                    <div className="grid grid-flow-row-dense grid-cols-4">
+                        <div>Alias: {preferences.nickname||vcData?.vcs.gamingStudio?.credentialSubject.Name || vcData?.vcs.gamingStudio?.credentialSubject.email} </div>
                         <div>Game Level: {reputation.gameLevel}</div>
                         <div>Hours Played: {reputation.totalPlayedhours}</div>
-                        <div className='col-span-3'>
+                        <div>
+                            {/* LAB2 Score: {reputation.score} */}
+                            </div>
+                      
+                        <div className='col-span-4'>
                             <canvas id='game' style={{ backgroundColor: preferences.themecolor || "black", contentVisibility: isMenuOpen ? "hidden" : "visible" }}>
                                 <div id='unsupported'>
                                     Sorry, this example cannot be run because your browser does
@@ -193,7 +197,7 @@ const Game1: FC = () => {
                                 </div>
                             </canvas>
                         </div>
-                        <div className='col-span-3'>
+                        <div className='col-span-4'>
 
                             <div style={{ display: "flex" }}>
                                 <SaveGameStats gamesettings={reputation} setIsloading={setIsloading} />
