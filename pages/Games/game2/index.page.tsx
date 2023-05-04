@@ -14,6 +14,7 @@ import styled from 'styled-components'
 import { promises } from 'dns'
 import { Button, Container, Spinner } from 'components'
 import { GenerateRequestToken, generateShareResponseToken, retrieveVCForRequestedToken, verifyShareResponseTokenPage } from '../tokenOperations'
+import { useRouter } from 'next/router'
 
 export type ModalProps = {
     useLocalContainer?: boolean;
@@ -105,7 +106,7 @@ const Import: FC<{
         const { authState, setAuthState } = useAuthContext()
         const [showImport, setShowImport] = useState(false)
         const [loading, setLoading] = useState(true)
-
+        const navigate = useRouter()
         useEffect(() => {
             (async () => {
                 const hasPreferences: boolean = await hasPreferenceVC()
@@ -116,16 +117,17 @@ const Import: FC<{
 
         if (!authState.authorized) {
             return (
-                <Link href={ROUTES.singIn} style={{
-                    boxSizing: "border-box",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    lineHeight: "23px",
-                    fontSize: "15px",
-                    display: "inline-block"
-                }}>
-                    Login With Affinidi Game wallet to sync preferences
-                </Link>
+                // <Link href={ROUTES.singIn} style={{
+                //     boxSizing: "border-box",
+                //     overflow: "hidden",
+                //     textOverflow: "ellipsis",
+                //     lineHeight: "23px",
+                //     fontSize: "15px",
+                //     display: "inline-block"
+                // }}>
+                     <Button onClick={(e)=>(navigate.push(ROUTES.singIn))}>
+                    Login With Affinidi Game wallet to sync preferences</Button>
+                // </Link>
             )
         }
 

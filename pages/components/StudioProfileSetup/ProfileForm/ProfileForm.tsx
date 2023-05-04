@@ -4,6 +4,7 @@ import { Container, Header, Input, ProfileInput } from 'components'
 import { ErrorResponse } from 'types/error'
 
 import * as S from './ProfileForm.styled'
+import { ProfileLabel } from 'components/Input/ProfileInput';
 
 type ProfileFormProps = {
   handleProfile(e: FormEvent): void;
@@ -81,14 +82,14 @@ export const ProfileForm: FC<ProfileFormProps> = ({
         <div className="grid grid-cols-0 gap-2">
           <S.Form className="col-start-2" onSubmit={handleProfile}>
 
-            <ProfileInput
+            <ProfileLabel
               id="email"
               type="email"
               label="Email address"
               placeholder={email?.replace(/['"]+/g, '') as string}
-              onChange={handleEmailChange}
-              hasError={Boolean(inputError || error?.message)}
-              helpText={inputError || error?.message}
+              //onChange={handleEmailChange}
+              // hasError={Boolean(inputError || error?.message)}
+              // helpText={inputError || error?.message}
             />
             {/* <ProfileInput
               id="mobile"

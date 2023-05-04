@@ -11,6 +11,50 @@ export interface InputProps
   onChange?: (value: string) => void;
 }
 
+export const ProfileLabel = forwardRef<HTMLInputElement, InputProps>(
+  ({ onChange, hasError, helpText, label, icon, className, ...props }, ref) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (onChange) {
+        onChange(e.target.value)
+      }
+    }
+
+    return (
+      <><>{label && (
+        <S.Label
+          variant="p4"
+          tag="label"
+          $hasError={hasError}
+          $disabled={props.disabled}
+        >
+          {label}
+        </S.Label>
+      )}
+      </><S.Wrapper direction="column" gap={4} className={className}>
+
+          <S.InputWrapper>
+            <S.Input
+              //onChange={handleChange}
+              data-testid="input"
+              $hasIcon={!!icon}
+              disabled={true}
+              {...props} />
+          </S.InputWrapper>
+
+          {helpText && (
+            <S.HelpText
+              variant="p3"
+              $hasError={hasError}
+              $disabled={props.disabled}
+            >
+              {helpText}
+            </S.HelpText>
+          )}
+        </S.Wrapper></>
+    )
+  }
+)
+
 const ProfileInput = forwardRef<HTMLInputElement, InputProps>(
   ({ onChange, hasError, helpText, label, icon, className, ...props }, ref) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
