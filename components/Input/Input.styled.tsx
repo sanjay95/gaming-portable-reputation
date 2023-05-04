@@ -138,7 +138,7 @@ export const DisabledInput = styled.input<
   height: ${pxToRem(48)};
   padding: ${pxToRem(16)} ${pxToRem(12)};
   background: transparent;
-  color: yellow //${(props) => props.theme.colors.neutral.primary['15']};
+  color: ${(props) => props.theme.colors.neutral.primary['15']};
   font-weight: 500;
   font-size: ${pxToRem(15)};
   border-radius: 4px;
@@ -176,14 +176,14 @@ export const DisabledInput = styled.input<
     `}
   ::placeholder {
     font-weight: 500;
-    color: ${(props) => props.theme.colors.neutral.primary['70']};
+    color: ${(props) => props.theme.colors.neutral.primary['15']};
   }
 
   &[disabled] {
-    color: ${(props) => props.theme.colors.neutral.primary['90']};
+    color: ${(props) => props.theme.colors.neutral.primary['15']};
 
     ::placeholder {
-      color: ${(props) => props.theme.colors.neutral.primary['90']};
+      color: ${(props) => props.theme.colors.neutral.primary['15']};
     }
   }
 `
