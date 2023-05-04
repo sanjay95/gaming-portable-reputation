@@ -30,9 +30,11 @@ or browse https://marketplace.visualstudio.com/items?itemName=Affinidi.affinidi
 In order to use the extension, you first need to create an Affinidi account and a project
 
 ```
-To do that, click on Affinidi logo in sidebar, then click on “Create an account with Affinidi”, enter your email and the OTP code that you received in your inbox.
+To do that, click on Affinidi logo in sidebar, then click on “Create an account with Affinidi”, 
+
+enter your email and the OTP code that you received in your inbox.
 ```
-image.png
+https://github.com/affinidi/vscode-extension/raw/HEAD/media/docs/create_account.png
 
 Once the account is created, a project named Default Project will be created automatically. As part of it, a digital identity will be created for you – your personal DID.
 
