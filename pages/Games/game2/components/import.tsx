@@ -62,10 +62,10 @@ export const Import: FC<{ setPreferences: (preferences: Preferences) => void; }>
         return <div>Loading...</div>;
     }
 
-    if (!showImport) {
-        return (<><div>No preferences found in your Cloud Wallet!</div><div> set now </div></>
-        );
-    }
+    // if (!showImport) {
+    //     return (<><div>No preferences found in your Cloud Wallet!</div><div> set now </div></>
+    //     );
+    // }
 
     return <ImportButton setPreferences={setPreferences} />;
 };
