@@ -231,28 +231,42 @@ await axios(
                     data: preferences,
                 }
             );
+```
+### `Backend API Operation to Get access token of User's Wallet and Project wallet create Unsinged VC, sign Unsigned VC using project credentials, store signed VC in user's wallet using user's wallet credentials `
 
-//
-try {
-  // Getting access token of user wallet to store VC 
+```typescript
+//pages/api/game/export-preferences.page.ts
+```
+   ### `Getting access token of user wallet to store VC `
+```typescript
   const accessToken = authenticateCloudWallet(req);
-  //creating Unsinged VC
-        const preferenceVc = await generatePreferencesVc(
+```
+   ### `creating Unsinged VC`
+ ```typescript 
+const preferenceVc = await generatePreferencesVc(
             holderDid.did,
             preferences
         );
+```
+  ### `getting access token of Project's wallet to sign VC `
 
-  //getting access token of Project's wallet to sign VC 
-        const {
+```typescript 
+const {
             wallet: { accessToken: cloudWalletAccessToken },
-          } = await iamClient.authenticateCloudWallet({ did: projectDid ?? '' })
-  //signing VC using project's credentials         
-        const { vc } = await cloudWalletClient.signCredential(
+```
+   ### `signing VC using the project's credentials`   
+     
+```typescript 
+        
+const { vc } = await cloudWalletClient.signCredential(
             { vc: preferenceVc },
             { accessToken: cloudWalletAccessToken }
         );
-  //storing signed VC in user's wallet by calling to wallet client function 
-        await cloudWalletClient.storeCredentials(
+```
+ ### `storing signed VC in the user's wallet by calling to wallet client function `
+ 
+```typescript 
+ await cloudWalletClient.storeCredentials(
             {
                 vcs: [vc as VerifiableCredential],
             },
@@ -260,11 +274,7 @@ try {
         );
 
         success = true;
-    } catch (e) {
-        console.error(e);
-    }            
-
-
+            
 ```
 
 
