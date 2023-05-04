@@ -30,4 +30,26 @@ Setting up the reference app is easy, just follow these steps:
     ```
     $ cp .env.example .env
     ```
+   **Enter values for `PROJECT_ID`, `PROJECT_DID` and `API_KEY_HASH` from your Affinidi project properties.** These are filled for you automatically if you used the [VS Code Extension](https://github.com/affinidi/vscode-extension) or [CLI](https://github.com/affinidi/affinidi-cli) to generate the app.
+    
+ 4. Launch the app:
+    ```
+    $ npm run dev
+    ```
+    
+    App will be available locally on http://localhost:3000.
+
+
+## Run Local
+ ```
+    npm run dev
+ ```
+
+## Run with docker
+ ```
+   COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build
+
+   docker-compose up -d
+   
+ ```
  
