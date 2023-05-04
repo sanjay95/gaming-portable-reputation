@@ -36,7 +36,7 @@ export type Reputation = {
     company: string
     genere: string
     totalPlayedhours: number
-    score: number
+    //LAB2   score: number
     gameLevel: number
 }
 

@@ -241,7 +241,7 @@ const Game2: FC = () => {
         company: '4Vesta',
         genere: 'arcade',
         totalPlayedhours: .1,
-        score: 0,
+        //LAB2   score: 0,
         gameLevel: 1,
     })
     useEffect(() => {
@@ -252,7 +252,7 @@ const Game2: FC = () => {
                 ({
                     ...prevState,                    
                     gameLevel: prevState.gameLevel + 1,
-                    score: 0,
+                    //LAB2   score: 0,
                     totalPlayedhours: (prevState.totalPlayedhours + Math.floor(Math.random() * 2))
 
                 }));
