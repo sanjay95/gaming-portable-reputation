@@ -219,7 +219,7 @@ signCredential: async (input: { vc: VerifiableCredential }, options: Options): P
 <details>
   <summary> Lab 3 : </summary>
 
-## change project with modified data issuance and verification
+## Change project with modified data issuance and verification
 
 Current game stats just save Game level and no of hours played. 
 Lets Include the scores of game too in Game stats. 
