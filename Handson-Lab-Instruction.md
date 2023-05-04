@@ -32,18 +32,11 @@ affinidi --version
 
 &nbsp;
 
-
-To start using Affinidi's privacy-preserving tools, please follow the next two steps:
-
-1. authenticate by creating an account, or logging in to your account if you already have one
-2. create a project, or activate a project if you already created one
-
 ### Authentication:
 
 You will need your email address, and then the code sent to your email to confirm authentication.
 
 To create an account:
-
 ```
 affinidi sign-up
 ```
@@ -81,3 +74,20 @@ affinidi show project <project-id>
 Take the values from here to use later in gaming project. 
 
 ---
+
+## Setup Project 
+Please follow [this readme](https://github.com/sanjay95/gaming-portable-reputation/blob/main/README.md) to run project
+
+## use project 
+
+This is a simple web app containing two games.
+You can play games without login, but stats and settings will not be saved. 
+
+To persist the changes and create portable reputation. user need to login as game player. 
+
+There will be total three types of Verifiable credentials will be created. 
+
+1. Studio Profile
+2. GameSetting
+3. GameStats
+
