@@ -89,7 +89,7 @@ Setting up the reference app is easy, just follow these steps:
 <details>
   <summary> Lab 1 : </summary>
 
-## use project 
+## use project to Issue and store Verifiable Credentails 
 
 This is a simple web app with user resgitration and two simplae games.
 You can play games without login, but stats and settings will not be saved. 
@@ -112,7 +112,7 @@ There will be total three types of Verifiable credentials will be created.
 As soon as you save profile, your wallet will be active with profile VC. 
 You can browset [wallet credentials](http://localhost:3000/wallet) to view the credentials issued to you and stored in our wallet. 
 
-Issuance 
+### `Issuance` 
 ```typescript
 //pages/components/StudioProfileSetup/useProfile.ts
 const {
@@ -201,8 +201,10 @@ signCredential: async (input: { vc: VerifiableCredential }, options: Options): P
   }
 
 ```
+</details>
 
-
+<details>
+  <summary> Lab 2 : </summary>
 - CLick on first game [Board tennis](http://localhost:3000/Games/game1). This is simulated game where game level and no of hours played will keep increasing simulating hours of play.
 - User has option to save the stats. Current stats will be issued as GameReputation Verifiable credentials to user wallet
 - User may wish to play second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be promted to import VC based on his logged in status. if not logged-in, user may login based on message displayed on screen
@@ -213,7 +215,7 @@ signCredential: async (input: { vc: VerifiableCredential }, options: Options): P
 ---
 
 <details>
-  <summary> Lab 2 : </summary>
+  <summary> Lab 3 : </summary>
 
 ## change project with modified data issuance and verification
 
