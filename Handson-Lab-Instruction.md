@@ -203,6 +203,8 @@ signCredential: async (input: { vc: VerifiableCredential }, options: Options): P
 ```
 </details>
 
+---
+
 <details>
   <summary> Lab 2 : </summary>
 - CLick on first game [Board tennis](http://localhost:3000/Games/game1). This is simulated game where game level and no of hours played will keep increasing simulating hours of play.
