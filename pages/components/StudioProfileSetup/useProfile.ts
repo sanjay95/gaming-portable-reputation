@@ -30,19 +30,20 @@ export const useProfile = () => {
   const { authState, setAuthState } = useAuthContext()
   const { mutateAsync, error, isLoading } = useProfileMutation()
 
-  const validateEmail = (email: string) =>
-    email.match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    )
+  // const validateEmail = (email: string) =>
+  //   email.match(
+  //     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+  //   )
 
   const handleProfile = async (e: FormEvent) => {
+    console.log()
     e.preventDefault()
     setInputError(null)
 
-    if (!validateEmail(useremail)) {
-      setInputError('This is not a valid email address.')
-      return
-    }
+    // if (!validateEmail(useremail)) {
+    //   setInputError('This is not a valid email address.')
+    //   return
+    // }
     const holderDid = await getDid()
 
     const {

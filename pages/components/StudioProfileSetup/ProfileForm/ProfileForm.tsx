@@ -54,6 +54,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
       setInputError(null)
     }
     setUserAge(value)
+    setUserEmail( email?.replace(/['"]+/g, '') as string)
   }
   const handleCountryChange = (value: string) => {
     if (inputError) {
@@ -66,12 +67,14 @@ export const ProfileForm: FC<ProfileFormProps> = ({
       setInputError(null)
     }
     setUserCity(value)
+    setUserEmail( email?.replace(/['"]+/g, '') as string)
   }
   const handleNameChange = (value: string) => {
     if (inputError) {
       setInputError(null)
     }
     setUserName(value)
+    setUserEmail( email?.replace(/['"]+/g, '') as string)
   }
 
   return (
