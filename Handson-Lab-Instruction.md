@@ -78,6 +78,8 @@ Take the values from here to use later in gaming project.
 ## Setup Project 
 Please follow [this readme](https://github.com/sanjay95/gaming-portable-reputation/blob/main/README.md) to run project
 
+---
+
 ## use project 
 
 This is a simple web app containing two games.
@@ -91,3 +93,11 @@ There will be total three types of Verifiable credentials will be created.
 2. GameSetting
 3. GameStats
 
+- browse the application at http://localhost:3000.
+- Click on JOIN OUR TEAM button 
+- enter email and provide the OTP
+- first login will prompt to complete profile (here Studio profile VC will be issued to logged in user wallet)
+- CLick on first game [Board tennis](http://localhost:3000/Games/game1). This is simulated game where game level and no of hours played will keep increasing simulating hours of play.
+- User has option to save the stats. Current stats will be issued as GameReputation Verifiable credentials to user wallet
+- User may wish to play second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be promted to import VC based on his logged in status. if not logged-in, user may login based on message displayed on screen
+- if user wishes to import VCs and agrees to share with Screen tesnnis game, his settings and stats from first game will utulized and second game may honor the stats and offer to play from advanced level
