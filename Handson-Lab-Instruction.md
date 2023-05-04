@@ -81,10 +81,11 @@ Take the values from here to use later in gaming project.
 Please follow [this readme](https://github.com/sanjay95/gaming-portable-reputation/blob/main/README.md) to run project
 
 </details>
+
 ---
 <details>
   <summary> Lab 1 : </summary>
-  
+
 ## use project 
 
 This is a simple web app containing two games.
@@ -108,7 +109,9 @@ There will be total three types of Verifiable credentials will be created.
 - if user wishes to import VCs and agrees to share with Screen tesnnis game, his settings and stats from first game will utulized and second game may honor the stats and offer to play from advanced level
 
 </details>
+
 ---
+
 <details>
   <summary> Lab 2 : </summary>
 
@@ -127,3 +130,5 @@ Please folllow the instruction below to enable new data in GameReputation issuan
   
 
   </details>
+
+  ---
