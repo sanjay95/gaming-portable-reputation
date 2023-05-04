@@ -19,8 +19,7 @@ const requestSchema = z
     genere: z.string(),
     totalPlayedhours: z.number().optional(),
     gameLevel: z.number().optional(),
-    //LAB2  
-    score: z.number().optional()
+    //LAB2      score: z.number().optional()
   })
   .strict()
 
