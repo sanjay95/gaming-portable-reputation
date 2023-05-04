@@ -201,7 +201,7 @@ signCredential: async (input: { vc: VerifiableCredential }, options: Options): P
   <summary> Lab 2 : </summary>
 - Click on the first game [Board tennis](http://localhost:3000/Games/game1). This is a simulated game where the game level and no. of hours played will keep increasing which simulates actual game hours.
 - The user has the option to save the stats. Current stats will be issued as GameReputation Verifiable credentials to the user's wallet
-- User may wish to play a second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be prompted to import VC based on his logged-in status. If not logged in, user may log in based on the message displayed on the screen
+- User may wish to play a second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be prompted to import VC based on his logged-in status. If not logged in, the user may log in based on the message displayed on the screen
 - if the user wishes to import VCs and agrees to share with the Screen tennis game, his settings and stats from the first game will be utilized and the second game may accept the stats and offer users to play the game from an advanced level.
 
 </details>
