@@ -1,5 +1,6 @@
 # gaming-portable-reputation
 Showcasing portable reputation in gaming using Affinidi's verifiable credentials ecosystem. 
+
 This solution aims to provoke thought process of  gamig studios 
 with the ability to chart the course for their 
 players' success by offering a portable gaming 
