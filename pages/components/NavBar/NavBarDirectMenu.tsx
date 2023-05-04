@@ -16,6 +16,7 @@ export default function NavBarDirectMenu() {
     }
     const logout = (e: any) => {
         handleLogOut()
+        navigate.push(ROUTES.home)
         return false
     }
     const anchorStyle = {
@@ -148,7 +149,7 @@ export default function NavBarDirectMenu() {
                             >
                                 <a
                                     className='navbar-link'
-                                    onClick={(e) => { redirect(e, ROUTES.game1) }}
+                                    onClick={(e) => { window.location.href = ROUTES.game1 }}
                                     style={anchorStyle}
                                 >
                                     Board tennis
@@ -167,7 +168,7 @@ export default function NavBarDirectMenu() {
                             >
                                 <a
                                     className='navbar-link'
-                                    onClick={(e) => { redirect(e, ROUTES.game2)}}
+                                    onClick={(e) => { window.location.href = ROUTES.game2 }}
                                     style={anchorStyle}
                                 >
                                     screen tennis

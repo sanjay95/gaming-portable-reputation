@@ -12,11 +12,12 @@ import { ModalProps as ReactModalProps } from 'react-responsive-modal'
 import { verifyShareResponseTokenResult } from '../../../types/verifyShareResponseResult'
 import styled from 'styled-components'
 import { promises } from 'dns'
-import { Button, Container, Spinner } from 'components'
+import { Button, Container, GameInput, Spinner } from 'components'
 import { GenerateRequestToken, generateShareResponseToken, retrieveVCForRequestedToken, verifyShareResponseTokenPage } from '../tokenOperations'
 import { useRouter } from 'next/router'
 import Modal2 from 'components/Modal2/Modal2'
 import { VerifiableCredential } from 'types/vc'
+import { useStudioVcProfiles } from 'hooks/useVcProfiles'
 
 export type ModalProps = {
     useLocalContainer?: boolean;
@@ -244,7 +245,24 @@ const Instructions: FC<ModalProps> = ({
 const Game2: FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [instruction, setInstruction] = useState(false)
+    const { data: vcData, mutate: getVCs, isLoading, error } = useStudioVcProfiles()
     const [isloading, setIsloading] = useState<boolean>(false)
+    const { authState, setAuthState } = useAuthContext()
+
+    useEffect(() => {
+        if (!authState.authorized) {
+            return
+        }
+        getVCs()
+
+    }, [authState.authorized])
+
+    useEffect(() => {
+        if (vcData) {
+            setAuthState((prevState) => { return { ...prevState, vc: vcData.vcs } })
+        }
+    }, [vcData])
+
     const [preferences, setPreferences] = useState<Preferences>({
         gamename: 'Game1',
         vcId: '',
@@ -283,14 +301,6 @@ const Game2: FC = () => {
         return () => clearInterval(interval);
     }, []);
 
-    
-    useEffect(() => {
-        const pong = (window as any).pongStart
-        if (pong) {
-            pong();
-        }
-    }, []);
-
     return (
         <S.Container style={{ backgroundColor: "white", paddingLeft: "20rem" }}>
             <div style={{ paddingBottom: "400px" }} className="grid grid-flow-row-dense grid-cols-12">
@@ -309,6 +319,15 @@ const Game2: FC = () => {
                     </div>
                 </div>
                 <div className='col-span-6' style={{ paddingTop: "25px", paddingLeft: "25px", textAlign: 'left' }}>
+                    {authState.authorized && authState.vc && (
+                        <GameInput
+                            id="nickName"
+                            type="string"
+                            label="Welcome: "
+                            placeholder={authState.vc?.gamingStudio?.credentialSubject.Name || authState.vc?.gamingStudio?.credentialSubject.email}
+                            style={{ border: "0px" }}
+                        />)}
+
                     {!preferences.nickname && <Import setPreferences={setPreferences}
                         setIsloading={setIsloading} />
                     }
@@ -318,14 +337,31 @@ const Game2: FC = () => {
 
                     {preferences.nickname && (
                         <>
-                            <div>Alias: <b>{preferences.nickname}</b></div>
-                            <div>Game theme color: <b>{preferences.themecolor}</b></div>
-                            <div>Game Volume: <b>{preferences.gamevolume}%</b></div>
+                            <GameInput
+                                id="GameAlias"
+                                type="string"
+                                label="Game player alias: "
+                                placeholder={preferences.nickname}
+                                style={{ border: "0px" }}
+                            />
+                            <GameInput
+                                id="nickName"
+                                type="string"
+                                label="Game theme color: "
+                                placeholder={preferences.themecolor}
+                                style={{ border: "0px" }}
+                            />
+                            <GameInput
+                                id="nickName"
+                                type="string"
+                                label="Game volume: "
+                                placeholder={preferences.gamevolume + "%"}
+                                style={{ border: "0px" }}
+                            />
                         </>
                     )}
                 </div>
             </div>
-
             <script src='/js/all.js' async type='text/javascript'></script>
 
         </S.Container>
