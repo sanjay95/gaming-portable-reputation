@@ -18,9 +18,9 @@ immersive gaming experience for everyone
 Setting up the reference app is easy, just follow these steps:  
 1. Clone the repo:
     ```
-    $ git clone git@github.com:affinidi/reference-app-portable-rep.git
-    $ cd reference-app-portable-rep
-    $ cd use-cases/gaming
+    $ git clone https://github.com/sanjay95/gaming-portable-reputation.git
+    $ cd gaming-portable-reputation
+    
     ```
 2. Install the dependencies:
     ```
