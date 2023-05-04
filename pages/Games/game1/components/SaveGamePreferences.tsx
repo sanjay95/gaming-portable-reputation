@@ -5,6 +5,8 @@ import * as S from '../Games.styled';
 import { createCloudWalletAuthenticationHeaders } from 'hooks/useAuthentication';
 import { Preferences } from '../index.page';
 import { hasPreferenceVC } from 'pages/Games/tokenOperations';
+import router, { useRouter } from 'next/router';
+import { ROUTES } from 'utils';
 
 export const SaveGamePreferences: FC<{ preferences: Preferences;
     setIsloading: (setIsloading: boolean) => void;
@@ -12,7 +14,7 @@ export const SaveGamePreferences: FC<{ preferences: Preferences;
     const { authState, setAuthState } = useAuthContext();
     const [showExport, setShowExport] = useState(false);
     const [loading, setLoading] = useState(true);
-
+    const navigate = useRouter()
     useEffect(() => {
         (async () => {
             const hasPreferences: boolean = await hasPreferenceVC();
@@ -26,7 +28,7 @@ export const SaveGamePreferences: FC<{ preferences: Preferences;
             <><S.ButtonWrapper
                 // disabled={disabled}
                 type="button"
-                //onClick={handleSubmit}
+                onClick={(e)=>(navigate.push(ROUTES.singIn))}
                 fullWidth
             >
                 Please sign in to save your settings..

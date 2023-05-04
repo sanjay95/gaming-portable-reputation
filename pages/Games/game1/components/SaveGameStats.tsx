@@ -5,6 +5,8 @@ import * as S from '../Games.styled';
 import { createCloudWalletAuthenticationHeaders } from 'hooks/useAuthentication';
 import { Preferences,Reputation } from '../index.page';
 import { hasPreferenceVC } from 'pages/Games/tokenOperations';
+import { ROUTES } from 'utils';
+import { useRouter } from 'next/router';
 
 export const SaveGameStats: FC<{ gamesettings: Reputation; 
     setIsloading: (setIsloading: boolean) => void }> = ({ gamesettings,setIsloading }) => {
@@ -12,6 +14,7 @@ export const SaveGameStats: FC<{ gamesettings: Reputation;
     const { authState, setAuthState } = useAuthContext();
     const [showExport, setShowExport] = useState(false);
     const [loading, setLoading] = useState(true);
+    const navigate = useRouter()
 
     useEffect(() => {
         (async () => {
@@ -26,7 +29,7 @@ export const SaveGameStats: FC<{ gamesettings: Reputation;
             <><S.ButtonWrapper
                 // disabled={disabled}
                 type="button"
-                //onClick={handleSubmit}
+                onClick={(e) => { navigate.push(ROUTES.singIn) }}
                 fullWidth
             >Please sign in to save your stats..
                   {/* {!isAuthorized ? ('Please sign in to save your settings..'):('Save Game Settings')} */}
@@ -105,7 +108,7 @@ const ExportButton: FC<{
         // loading={isLoading}
         fullWidth
     >
-       Save Game Settings
+       Save current stats
     </S.ButtonWrapper>);
 
 };

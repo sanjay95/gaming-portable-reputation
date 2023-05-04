@@ -78,14 +78,14 @@ export const ProfileForm: FC<ProfileFormProps> = ({
       <Header title="Profile Setup" />
 
       <Container>
-        <div className="grid lg:grid-cols-0 lg:gap-1">
-          <S.Form className="lg:col-start-2" onSubmit={handleProfile}>
+        <div className="grid grid-cols-0 gap-2">
+          <S.Form className="col-start-2" onSubmit={handleProfile}>
 
             <ProfileInput
               id="email"
               type="email"
               label="Email address"
-              placeholder={email?.trimEnd() as string}
+              placeholder={email?.replace(/['"]+/g, '') as string}
               onChange={handleEmailChange}
               hasError={Boolean(inputError || error?.message)}
               helpText={inputError || error?.message}

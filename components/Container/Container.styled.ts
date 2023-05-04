@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import { pxToRem } from 'utils'
 
 export const Container = styled.div`
-  padding: 0 ${pxToRem(100)};
+  padding: 1rem ${pxToRem(100)};
 
   @media (max-width: 1024px) {
-    padding: 0 ${pxToRem(24)};
+    padding: 1rem ${pxToRem(24)};
   }
 `
 

@@ -55,7 +55,6 @@ const Home: FC = () => {
 
   const redirect = (e: any, path: string) => {
     e.preventDefault()
-    alert(path)
     navigate.push(path)
     return false
   }
@@ -106,7 +105,7 @@ const Home: FC = () => {
           </h1>
           <a
             className='btn'
-            onClick={(e) => { redirect(e, ROUTES.home) }}
+            onClick={(e) => { redirect(e, ROUTES.singIn) }}
             style={{
               margin: '0px',
               padding: '0px',
