@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import { useAuthContext } from 'hooks/useAuthContext';
 import Link from 'next/link';
 import { ROUTES } from 'utils';
-import  { Preferences }  from '../index.page';
+import { Preferences } from 'types/vc'
 import  { hasPreferenceVC }  from '../../tokenOperations';
 import { createCloudWalletAuthenticationHeaders } from 'hooks/useAuthentication';
 import axios from 'axios';

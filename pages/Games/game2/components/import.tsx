@@ -2,9 +2,10 @@ import { FC, useState, useEffect } from 'react';
 import { useAuthContext } from 'hooks/useAuthContext';
 import Link from 'next/link';
 import { ROUTES } from 'utils';
-import  { Preferences, hasPreferenceVC }  from '../index.page';
+import { hasPreferenceVC } from '../index.page';
 import { createCloudWalletAuthenticationHeaders } from 'hooks/useAuthentication';
 import axios from 'axios';
+import { Preferences } from 'types/vc'
 
 export const ImportButton: FC<{
     setPreferences: (preferences: Preferences) => void

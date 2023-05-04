@@ -3,7 +3,8 @@ import { useAuthContext } from 'hooks/useAuthContext';
 import axios from 'axios';
 import * as S from '../Games.styled';
 import { createCloudWalletAuthenticationHeaders } from 'hooks/useAuthentication';
-import { Preferences, hasPreferenceVC } from '../index.page';
+import {  hasPreferenceVC } from '../index.page';
+import { Preferences } from 'types/vc';
 
 export const Export: FC<{ preferences: Preferences; }> = ({ preferences }) => {
     const { authState, setAuthState } = useAuthContext();

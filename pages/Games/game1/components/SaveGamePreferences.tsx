@@ -3,10 +3,11 @@ import { useAuthContext } from 'hooks/useAuthContext';
 import axios from 'axios';
 import * as S from '../Games.styled';
 import { createCloudWalletAuthenticationHeaders } from 'hooks/useAuthentication';
-import { Preferences } from '../index.page';
+
 import { hasPreferenceVC } from 'pages/Games/tokenOperations';
 import router, { useRouter } from 'next/router';
 import { ROUTES } from 'utils';
+import { Preferences } from 'types/vc';
 
 export const SaveGamePreferences: FC<{ preferences: Preferences;
     setIsloading: (setIsloading: boolean) => void;

@@ -114,7 +114,7 @@ const ImportButton: FC<{
                     {data && <>
                         <b>Requested VCs </b>
                         {data.vcTypesFound?.map(vc => <p key={vc} style={{ paddingLeft: '10px' }}>{vc}</p>)}<br />
-                        By clicking 'Allow', you consent to sharing the above VC's.
+                        By clicking &apos;Allow&lsquo;, you consent to sharing the above VC&lsquo;s.
                     </>
                     }
                     {message}

@@ -11,8 +11,9 @@ export interface InputProps
   onChange?: (value: string) => void;
 }
 
-export const ProfileLabel = forwardRef<HTMLInputElement, InputProps>(
+ const ProfileLabel = forwardRef<HTMLInputElement, InputProps>(
   ({ onChange, hasError, helpText, label, icon, className, ...props }, ref) => {
+   
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (onChange) {
         onChange(e.target.value)
@@ -55,6 +56,8 @@ export const ProfileLabel = forwardRef<HTMLInputElement, InputProps>(
     )
   }
 )
+ProfileLabel.displayName = 'ProfileLabel'
+export {ProfileLabel}
 
 const ProfileInput = forwardRef<HTMLInputElement, InputProps>(
   ({ onChange, hasError, helpText, label, icon, className, ...props }, ref) => {

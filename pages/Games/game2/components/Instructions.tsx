@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import * as S from '../Games.styled';
-import { ModalProps } from '../index.page';
+import { ModalProps } from 'types/vc';
 
 export const Instructions: FC<ModalProps> = ({
     title, children, footer, position = 'center', onClose, ...rest
