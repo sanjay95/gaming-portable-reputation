@@ -3,32 +3,42 @@
 This is a ready-to-use reference app that showcases usage of Affinidi API for issuing, sharing and storing verifiable credentials in the wallet.
 
 ---
+<details>
+  <summary> Lab 0 : </summary>
 
-## Lab 0 : Pre-Requisite
+## Pre-Requisite
 
 To run this lab you need to setup the Issuer credentails. 
 To Know more about Issuer, [click here](https://academy.affinidi.com/what-are-verifiable-credentials-79f1846a7b9#:~:text=about%20these%20entities.-,Issuer,-An%20issuer%20is)
 
  To setup issuer credentails, you need PROJECT_ID, PROJECT_DID, API_KEY_HASH
 
-We will use Affnidi's CLI tool to generate these required data.
+We will use Affnidi's VS code extension tool to generate these required data.
 #### Please follow the instruction below.
 
 You need to have installed on your machine:
 
 - [NodeJs v16 and higher](https://nodejs.org). (it's recommended to use [nvm](https://github.com/nvm-sh/nvm))
 
-Run the installation command:
+Instal Affinidi extension from extension market place:
 
 ```
-npm install -g @affinidi/cli
+Go to to extension market place and search Affinidi or Affinidi.affinidi
+or browse https://marketplace.visualstudio.com/items?itemName=Affinidi.affinidi
 ```
 
-To check Affinidi CLI version:
+In order to use the extension, you first need to create an Affinidi account and a project
 
 ```
-affinidi --version
+To do that, click on Affinidi logo in sidebar, then click on “Create an account with Affinidi”, 
+
+enter your email and the OTP code that you received in your inbox.
 ```
+https://github.com/affinidi/vscode-extension/raw/HEAD/media/docs/create_account.png
+
+Once the account is created, a project named Default Project will be created automatically. As part of it, a digital identity will be created for you – your personal DID.
+
+Initially the Default Project will be set as your Active Project.
 
 &nbsp;
 
@@ -78,9 +88,13 @@ Take the values from here to use later in gaming project.
 ## Setup Project 
 Please follow [this readme](https://github.com/sanjay95/gaming-portable-reputation/blob/main/README.md) to run project
 
----
+</details>
 
-## Lab 1: use project 
+---
+<details>
+  <summary> Lab 1 : </summary>
+
+## use project 
 
 This is a simple web app containing two games.
 You can play games without login, but stats and settings will not be saved. 
@@ -102,9 +116,14 @@ There will be total three types of Verifiable credentials will be created.
 - User may wish to play second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be promted to import VC based on his logged in status. if not logged-in, user may login based on message displayed on screen
 - if user wishes to import VCs and agrees to share with Screen tesnnis game, his settings and stats from first game will utulized and second game may honor the stats and offer to play from advanced level
 
+</details>
+
 ---
 
-## Lab 2 : change project with modified data issuance and verification
+<details>
+  <summary> Lab 2 : </summary>
+
+## change project with modified data issuance and verification
 
 Current game stats just save Game level and no of hours played. 
 Lets Include the scores of game too in Game stats. 
@@ -117,3 +136,7 @@ Please folllow the instruction below to enable new data in GameReputation issuan
 - add scrore to game and add to game state 
 - change the unsigned VC 
   
+
+  </details>
+
+  ---
