@@ -12,4 +12,6 @@ services, and privacy-preserving technologies
 helps gaming studios attract new customers and 
 retain more players, ensuring a more secure and 
 immersive gaming experience for everyone
-# 
+
+# Prerequisite
+ 
