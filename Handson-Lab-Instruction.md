@@ -346,10 +346,97 @@ const { vc } = await cloudWalletClient.signCredential(
     )
 
 ```
+#### `Check available VC in the wallet for a request token`
+
+```typescript
+ //pages/api/holder/get-vcs-for-shareRequestToken.page.ts
+ const { vcs } = await cloudWalletClient.getCredentialsForRequestToken({shareRequestToken}, { accessToken });
+//pages/api/clients/cloud-wallet-client.ts
+ const { data: vcs } = await axios<VerifiableCredential[]>(
+      `${cloudWalletApiUrl}/v1/wallet/credentials?credentialShareRequestToken=${input.shareRequestToken}`,
+      {
+        method: 'GET',
+        headers: {
+          'Api-Key': apiKeyHash,
+          Authorization: options.accessToken,
+        },
+      }
+    )
+
+```
+
+#### `Create a share response token for a request token`
+
+```typescript
+//pages/api/holder/build-shaResponseToken.page.ts
+const accessToken = authenticateCloudWallet(req);
+
+const { shareRequestToken } = requestSchema.parse(req.body);
+
+const { vcs } = await cloudWalletClient.getCredentialsForRequestToken({ shareRequestToken }, { accessToken });
+
+const { shareResponseToken } = await cloudWalletClient.getShareResponseToken({ shareRequestToken, vcs }, { accessToken });
+
+//pages/api/clients/cloud-wallet-client.ts
+
+const { data: vcs } = await axios<VerifiableCredential[]>(
+      `${cloudWalletApiUrl}/v1/wallet/credentials?credentialShareRequestToken=${input.shareRequestToken}`,
+      {
+        method: 'GET',
+        headers: {
+          'Api-Key': apiKeyHash,
+          Authorization: options.accessToken,
+        },
+      }
+    )
+
+ const { data: vcs } = await axios<VerifiableCredential[]>(
+      `${cloudWalletApiUrl}/v1/wallet/credentials?credentialShareRequestToken=${input.shareRequestToken}`,
+      {
+        method: 'GET',
+        headers: {
+          'Api-Key': apiKeyHash,
+          Authorization: options.accessToken,
+        },
+      }
+    )
+
+```
+
+#### `Validate share response token`
+
+```typescript
+//pages/api/verifier/verify-shareResponseToken.page.ts
+
+ const { shareRequestToken, shareResponseToken } = requestSchema.parse(req.body)
+  const {
+    wallet: { accessToken: cloudWalletAccessToken },
+  } = await iamClient.authenticateCloudWallet({ did: projectDid ?? '' })
+
+  const { verifyShareResponseTokenResult } = await verifierClient.verifyShareResponse(
+    { shareRequestToken, shareResponseToken },
+    { accessToken: cloudWalletAccessToken })
+
+//pages/api/clients/verifier-client.ts
+ const { data: verifyShareResponseTokenResult } = await axios<verifyShareResponseTokenResult>(
+      `${verifierApiUrl}/v1/verifier/verify-share-response`,
+      {
+        method: 'POST',
+        headers: {
+          'Api-Key': apiKeyHash,
+          Authorization: options.accessToken,
+        },
+        data: {
+          credentialShareRequestToken: input.shareRequestToken,
+          credentialShareResponseToken:input.shareResponseToken
+        },
+      }
+    )
+
+```
 
   </details>
 
   ---
 
-- Users may wish to play a second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be prompted to import VC based on his logged-in status. If not logged in, the user may log in based on the message displayed on the screen
-- if the user wishes to import VCs and agrees to share with the Screen tennis game, his settings and stats from the first game will be utilized and the second game may accept the stats and offer users to play the game from an advanced level.
+
