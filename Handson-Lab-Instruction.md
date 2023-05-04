@@ -101,3 +101,19 @@ There will be total three types of Verifiable credentials will be created.
 - User has option to save the stats. Current stats will be issued as GameReputation Verifiable credentials to user wallet
 - User may wish to play second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be promted to import VC based on his logged in status. if not logged-in, user may login based on message displayed on screen
 - if user wishes to import VCs and agrees to share with Screen tesnnis game, his settings and stats from first game will utulized and second game may honor the stats and offer to play from advanced level
+
+---
+
+## change project with modified data issuance and verification
+
+Current game stats just save Game level and no of hours played. 
+Lets Include the scores of game too in Game stats. 
+
+Please folllow the instruction below to enable new data in GameReputation issuance.
+
+### Prepare VC schema 
+
+- Let's add score to exiting game schema. 
+- add scrore to game and add to game state 
+- change the unsigned VC 
+  
