@@ -3,8 +3,10 @@
 This is a ready-to-use reference app that showcases usage of Affinidi API for issuing, sharing and storing verifiable credentials in the wallet.
 
 ---
+<details>
+  <summary> Lab 0 : </summary>
 
-## Lab 0 : Pre-Requisite
+## Pre-Requisite
 
 To run this lab you need to setup the Issuer credentails. 
 To Know more about Issuer, [click here](https://academy.affinidi.com/what-are-verifiable-credentials-79f1846a7b9#:~:text=about%20these%20entities.-,Issuer,-An%20issuer%20is)
@@ -78,9 +80,11 @@ Take the values from here to use later in gaming project.
 ## Setup Project 
 Please follow [this readme](https://github.com/sanjay95/gaming-portable-reputation/blob/main/README.md) to run project
 
+</details>
 ---
-
-## Lab 1: use project 
+<details>
+  <summary> Lab 1 : </summary>
+## use project 
 
 This is a simple web app containing two games.
 You can play games without login, but stats and settings will not be saved. 
@@ -102,9 +106,12 @@ There will be total three types of Verifiable credentials will be created.
 - User may wish to play second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be promted to import VC based on his logged in status. if not logged-in, user may login based on message displayed on screen
 - if user wishes to import VCs and agrees to share with Screen tesnnis game, his settings and stats from first game will utulized and second game may honor the stats and offer to play from advanced level
 
+</details>
 ---
+<details>
+  <summary> Lab 2 : </summary>
 
-## Lab 2 : change project with modified data issuance and verification
+## change project with modified data issuance and verification
 
 Current game stats just save Game level and no of hours played. 
 Lets Include the scores of game too in Game stats. 
@@ -117,3 +124,5 @@ Please folllow the instruction below to enable new data in GameReputation issuan
 - add scrore to game and add to game state 
 - change the unsigned VC 
   
+
+  </details>
