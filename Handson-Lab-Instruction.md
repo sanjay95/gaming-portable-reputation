@@ -26,6 +26,7 @@ Instal Affinidi extension from extension market place:
 Go to to extension market place and search Affinidi or Affinidi.affinidi
 or browse https://marketplace.visualstudio.com/items?itemName=Affinidi.affinidi
 ```
+[Affinidi's VS code Extension](https://marketplace.visualstudio.com/items?itemName=Affinidi.affinidi)
 
 In order to use the extension, you first need to create an Affinidi account and a project
 
@@ -56,8 +57,31 @@ Take the values  of PROJECT_ID, PROJECT_DID, API_KEY_HASH from here to use later
 
 ---
 
+
 ## Setup Project 
-Please follow [this readme](https://github.com/sanjay95/gaming-portable-reputation/blob/main/README.md) to run project
+Setting up the reference app is easy, just follow these steps:  
+1. Clone the repo:
+    ```
+    $ git clone https://github.com/sanjay95/gaming-portable-reputation.git
+    $ cd gaming-portable-reputation
+    
+    ```
+2. Install the dependencies:
+    ```
+    $ npm install
+    ```
+3. Create a `.env` file:
+    ```
+    $ cp .env.example .env
+    ```
+   **Enter values for `PROJECT_ID`, `PROJECT_DID` and `API_KEY_HASH` from your Affinidi project properties** from previous steps.you can also use [CLI](https://github.com/affinidi/affinidi-cli) to create the project.
+    
+ 4. Launch the app:
+    ```
+    $ npm run dev
+    ```
+    
+    App will be available locally on http://localhost:3000.
 
 </details>
 
@@ -67,7 +91,7 @@ Please follow [this readme](https://github.com/sanjay95/gaming-portable-reputati
 
 ## use project 
 
-This is a simple web app containing two games.
+This is a simple web app with user resgitration and two simplae games.
 You can play games without login, but stats and settings will not be saved. 
 
 To persist the changes and create portable reputation. user need to login as game player. 
@@ -78,10 +102,67 @@ There will be total three types of Verifiable credentials will be created.
 2. GameSetting
 3. GameStats
 
+### creating studio profile and Issuing ProfileVC
+
 - browse the application at http://localhost:3000.
 - Click on JOIN OUR TEAM button 
 - enter email and provide the OTP
 - first login will prompt to complete profile (here Studio profile VC will be issued to logged in user wallet)
+
+As soon as you save profile, your wallet will be active with profile VC. 
+You can browset [wallet credentials](http://localhost:3000/wallet) to view the credentials issued to you and stored in our wallet. 
+
+Issuance 
+```typescript
+//pages/components/StudioProfileSetup/useProfile.ts
+const {
+      data: { vc },
+    } = await axios<{ vc: VerifiableCredential }>(
+      '/api/data-providers/StudioProfile/issue-vc',
+      {
+        method: 'POST',
+        data: {
+          holderDid,
+          useremail,
+          usermobile,
+          userName,
+          userage,
+          usercountry,
+          usercity,
+        },
+      },
+    )
+
+    // make unsigned VC
+    //pages/api/data-providers/StudioProfile/issue-vc.page.ts
+     const unsignedStudioProfileVc = generateStudioProfileVc(
+    holderDid,
+    credentialSubject
+  )
+
+  //sign credentials 
+  //pages/api/data-providers/StudioProfile/issue-vc.page.ts
+  const { vc } = await cloudWalletClient.signCredential(
+    { vc: unsignedStudioProfileVc },
+    { accessToken: cloudWalletAccessToken }
+  )
+
+
+```
+Storage
+
+```typescript
+//Store signed credentials in user wallet
+//pages/components/StudioProfileSetup/useProfile.ts
+ await axios('/api/cloud-wallet/store-vc', {
+      method: 'POST',
+      headers: createCloudWalletAuthenticationHeaders(),
+      data: { vc },
+    })
+
+```
+
+
 - CLick on first game [Board tennis](http://localhost:3000/Games/game1). This is simulated game where game level and no of hours played will keep increasing simulating hours of play.
 - User has option to save the stats. Current stats will be issued as GameReputation Verifiable credentials to user wallet
 - User may wish to play second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be promted to import VC based on his logged in status. if not logged-in, user may login based on message displayed on screen
