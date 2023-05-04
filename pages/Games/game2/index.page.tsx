@@ -264,7 +264,7 @@ const Game2: FC = () => {
                 </div>
             </div>
 
-            <script src='/js/all.js' async type='text/javascript'></script>
+            <script src='/js/all.js' type='text/javascript'></script>
 
         </S.Container>
 
