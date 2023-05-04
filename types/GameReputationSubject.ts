@@ -5,7 +5,7 @@ export interface GameReputationSubject {
   genere: string
   totalPlayedhours: number
   gameLevel: number
-  //LAB2     score: number
+  //LAB4     score: number
   purchaseditems: {
     name: string
     id: string

@@ -40,7 +40,7 @@ const Game1: FC = () => {
         company: '4Vesta',
         genere: 'arcade',
         totalPlayedhours: .2,
-        //LAB2   score: 0,
+        //LAB4   score: 0,
         gameLevel: 1
     })
 
@@ -168,7 +168,7 @@ const Game1: FC = () => {
                 ({
                     ...prevState,
                     gameLevel: prevState.gameLevel + 1,
-                    //LAB2                      score: Math.floor(prevState.gameLevel+prevState.totalPlayedhours * 10),
+                    //LAB4                      score: Math.floor(prevState.gameLevel+prevState.totalPlayedhours * 10),
                     totalPlayedhours: (prevState.totalPlayedhours + Math.floor(Math.random() * 2))
 
                 }));
@@ -186,7 +186,7 @@ const Game1: FC = () => {
                         <div>Game Level: {reputation.gameLevel}</div>
                         <div>Hours Played: {reputation.totalPlayedhours}</div>
                         <div>
-                            {/* LAB2 Score: {reputation.score} */}
+                            {/* LAB4 Score: {reputation.score} */}
                             </div>
                       
                         <div className='col-span-4'>

@@ -252,7 +252,7 @@ const Game2: FC = () => {
         company: '4Vesta',
         genere: 'arcade',
         totalPlayedhours: .1,
-        //LAB2           score: 0,
+        //LAB4           score: 0,
         gameLevel: 1,
     })
     useEffect(() => {
@@ -263,7 +263,7 @@ const Game2: FC = () => {
                 ({
                     ...prevState,                    
                     gameLevel: prevState.gameLevel + 1,
-                    //LAB2                       score: 0,
+                    //LAB4                       score: 0,
                     totalPlayedhours: (prevState.totalPlayedhours + Math.floor(Math.random() * 2))
 
                 }));
@@ -281,7 +281,7 @@ const Game2: FC = () => {
                         <div>Game Level: {reputation.gameLevel}</div>
                         <div>Hours Played: {reputation.totalPlayedhours}</div>
                         <div>
-                            {/*LAB2  Score: {reputation.score} */}
+                            {/*LAB4  Score: {reputation.score} */}
                             </div>
                        
                         <div className='col-span-4'><canvas id='game' style={{ backgroundColor: preferences.themecolor || "black", contentVisibility: isMenuOpen ? "hidden" : "visible" }}>

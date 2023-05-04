@@ -439,4 +439,9 @@ const { data: vcs } = await axios<VerifiableCredential[]>(
 
   ---
 
+<details>
+  <summary> Lab 4 : </summary>
 
+## Issue and consume new VC with additional field
+
+ </details>
