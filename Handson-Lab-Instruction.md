@@ -1,6 +1,6 @@
 # Portable reputation – Uses of Verifiable Credentials
 
-This is a ready-to-use reference app that showcases usage of Affinidi API for issuing, sharing and storing verifiable credentials in the wallet.
+This is a ready-to-use reference app that showcases the usage of Affinidi API for issuing, sharing and storing verifiable credentials in the wallet.
 
 ---
 <details>
@@ -8,28 +8,28 @@ This is a ready-to-use reference app that showcases usage of Affinidi API for is
 
 ## Pre-Requisite
 
-To run this lab you need to setup the Issuer credentails. 
+To run this lab you need to set up the Issuer credentials. 
 To Know more about Issuer, [click here](https://academy.affinidi.com/what-are-verifiable-credentials-79f1846a7b9#:~:text=about%20these%20entities.-,Issuer,-An%20issuer%20is)
 
- To setup issuer credentails, you need PROJECT_ID, PROJECT_DID, API_KEY_HASH
+ To set up issuer credentials, you need PROJECT_ID, PROJECT_DID, API_KEY_HASH
 
 you will use Affnidi's VS code extension tool to generate these required data.
 #### Please follow the instruction below.
 
-You need to have following installed on your machine:
+You need to have the following installed on your machine:
 
 - [NodeJs v16 and higher](https://nodejs.org). (it's recommended to use [nvm](https://github.com/nvm-sh/nvm))
 - [VS Code](https://code.visualstudio.com/)
 
-Instal Affinidi extension from extension market place:
+Instal Affinidi extension from extension marketplace:
 
 ```
 Go to to extension market place and search Affinidi or Affinidi.affinidi
 or browse https://marketplace.visualstudio.com/items?itemName=Affinidi.affinidi
 ```
-[Affinidi's VS code Extension](https://marketplace.visualstudio.com/items?itemName=Affinidi.affinidi)
+[Affinidi's VS Code Extension](https://marketplace.visualstudio.com/items?itemName=Affinidi.affinidi)
 
-In order to use the extension, you first need to create an Affinidi account and a project
+To use the extension, you first need to create an Affinidi account and a project
 
 ```
 To do that, click on Affinidi logo in sidebar, then click on “Create an account with Affinidi”, 
@@ -39,8 +39,7 @@ enter your email and the OTP code that you received in your inbox.
 ![alt text](https://github.com/affinidi/vscode-extension/raw/HEAD/media/docs/create_account.png "")
 
 Once the account is created, a project named Default Project will be created automatically. As part of it, a digital identity will be created for you – your personal DID.
-
-Initially the Default Project will be set as your Active Project.
+Initially, the Default Project will be set as your Active Project.
 
 ![alt text](https://github.com/affinidi/vscode-extension/raw/HEAD/media/docs/default_project.png)
 ![alt text](https://github.com/affinidi/vscode-extension/raw/HEAD/media/docs/inactive_projects.png)
@@ -48,13 +47,10 @@ Initially the Default Project will be set as your Active Project.
 
 
 Either create a new project or use the default project. 
-To get the project details. click on default project as below.
+To get the project details. click on the default project below.
 
 <img width="1075" alt="image" src="https://user-images.githubusercontent.com/1314582/236203164-f3a74bb0-be58-4daf-a07b-8beb24ec8bc7.png">
-
-
-
-Take the values  of PROJECT_ID, PROJECT_DID, API_KEY_HASH from here to use later in gaming project. 
+Take the values of PROJECT_ID, PROJECT_DID, and API_KEY_HASH from here to use later in the gaming project. 
 
 ---
 
@@ -75,14 +71,10 @@ Setting up the reference app is easy, just follow these steps:
     ```
     $ cp .env.example .env
     ```
-   **Enter values for `PROJECT_ID`, `PROJECT_DID` and `API_KEY_HASH` from your Affinidi project properties** from previous steps.you can also use [CLI](https://github.com/affinidi/affinidi-cli) to create the project.
+   **Enter values for `PROJECT_ID`, `PROJECT_DID` and `API_KEY_HASH` from your Affinidi project **properties** from the previous steps. you can also use [CLI](https://github.com/affinidi/affinidi-cli) to create the project.
     
  4. Launch the app:
-    ```
-    $ npm run dev
-    ```
-    
-    App will be available locally on http://localhost:3000.
+The app will be available locally on http://localhost:3000.
 
 </details>
 
@@ -90,13 +82,13 @@ Setting up the reference app is easy, just follow these steps:
 <details>
   <summary> Lab 1 : </summary>
 
-## Use project to Issue and store Verifiable Credentails 
+## Use the project to Issue and store Verifiable Credentials 
 
-This is a simple web app with user resgitration and two simple games.
+This is a simple web app with user registration and two simple games.
 You can play games without login, but game stats and settings will not be saved. 
 
 
-There will be total three types of Verifiable credentials created. 
+There will be a total of three types of Verifiable credentials created. 
 
 1. Studio Profile
 2. GameSetting
@@ -105,11 +97,11 @@ There will be total three types of Verifiable credentials created.
 ### Creating studio profile and Issuing ProfileVC
 
 - browse the application at http://localhost:3000.
-- click on JOIN OUR TEAM button 
-- enter email and provide the OTP
-- first login will prompt to complete profile (here Studio profile VC will be issued to logged-in user's wallet)
+- click on the JOIN OUR TEAM button 
+- enter your email and provide the OTP
+- the first login will prompt you to complete the profile (here Studio profile VC will be issued to the logged-in user's wallet)
 
-As soon as you save profile, your wallet will be active with profile VC. 
+As soon as you save your profile, your wallet will be active with profile VC. 
 You can browse [wallet credentials](http://localhost:3000/wallet) to view the credentials issued to you and stored in your wallet. 
 
 ### `Issuance` 
@@ -207,10 +199,10 @@ signCredential: async (input: { vc: VerifiableCredential }, options: Options): P
 
 <details>
   <summary> Lab 2 : </summary>
-- Click on first game [Board tennis](http://localhost:3000/Games/game1). This is simulated game where game level and no. of hours played will keep increasing which simulates actual game hours.
-- User has option to save the stats. Current stats will be issued as GameReputation Verifiable credentials to user wallet
-- User may wish to play second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be promted to import VC based on his logged in status. if not logged-in, user may login based on message displayed on screen
-- if user wishes to import VCs and agrees to share with Screen tennis game, his settings and stats from first game will be utilizied and second game may accept the stats and offer users to play game from advanced level.
+- Click on the first game [Board tennis](http://localhost:3000/Games/game1). This is a simulated game where the game level and no. of hours played will keep increasing which simulates actual game hours.
+- The user has the option to save the stats. Current stats will be issued as GameReputation Verifiable credentials to the user's wallet
+- User may wish to play a second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be prompted to import VC based on his logged-in status. If not logged in, user may log in based on the message displayed on the screen
+- if the user wishes to import VCs and agrees to share with the Screen tennis game, his settings and stats from the first game will be utilized and the second game may accept the stats and offer users to play the game from an advanced level.
 
 </details>
 
@@ -221,15 +213,14 @@ signCredential: async (input: { vc: VerifiableCredential }, options: Options): P
 
 ## Change project with modified data issuance and verification
 
-Current game stats just save Game level and no of hours played. 
-Lets Include the scores of game too in Game stats. 
+Current game stats just save the Game level and the hours played. Let's Include the scores of the game too in Game stats. 
 
-Please folllow the instruction below to enable new data in GameReputation issuance.
+Please follow the instruction below to enable new data in GameReputation issuance.
 
 ### Prepare VC schema 
 
-- Let's add score to exiting game schema. 
-- add scrore to game and add to game state 
+- Let's add the score to the existing game schema. 
+- add score to game and add to game state 
 - change the unsigned VC 
   
 
