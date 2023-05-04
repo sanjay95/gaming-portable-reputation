@@ -199,9 +199,25 @@ signCredential: async (input: { vc: VerifiableCredential }, options: Options): P
 
 <details>
   <summary> Lab 2 : </summary>
+
+  ## Issue Game Settings as digital credentials
+
 - Click on the first game [Board tennis](http://localhost:3000/Games/game1). This is a simulated game where the game level and no. of hours played will keep increasing which simulates actual game hours.
-- The user has the option to save the stats. Current stats will be issued as GameReputation Verifiable credentials to the user's wallet
-- User may wish to play a second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be prompted to import VC based on his logged-in status. If not logged in, the user may log in based on the message displayed on the screen
+  - To make the system play as both players, ``press 0``
+ - you may change the game settings like Theme color, game sound and Alias, these settings will be issued as VC to your wallet only if you press the `save settings` button 
+ - Once you press the save settings button, a VC is issued by the application and stored in your credentials wallet.
+ - you may check the newly issued VC from the menu [wallet credentials](http://localhost:3000/wallet)](http://localhost:3000/wallet)
+
+## `Issuance of game settings as VC`
+
+```typescript
+//
+
+
+```
+
+
+- Users may wish to play a second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be prompted to import VC based on his logged-in status. If not logged in, the user may log in based on the message displayed on the screen
 - if the user wishes to import VCs and agrees to share with the Screen tennis game, his settings and stats from the first game will be utilized and the second game may accept the stats and offer users to play the game from an advanced level.
 
 </details>
