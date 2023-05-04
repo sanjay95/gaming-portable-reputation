@@ -13,12 +13,13 @@ To Know more about Issuer, [click here](https://academy.affinidi.com/what-are-ve
 
  To setup issuer credentails, you need PROJECT_ID, PROJECT_DID, API_KEY_HASH
 
-We will use Affnidi's VS code extension tool to generate these required data.
+you will use Affnidi's VS code extension tool to generate these required data.
 #### Please follow the instruction below.
 
-You need to have installed on your machine:
+You need to have following installed on your machine:
 
 - [NodeJs v16 and higher](https://nodejs.org). (it's recommended to use [nvm](https://github.com/nvm-sh/nvm))
+- [VS Code](https://code.visualstudio.com/)
 
 Instal Affinidi extension from extension market place:
 
