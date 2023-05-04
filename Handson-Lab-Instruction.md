@@ -34,11 +34,15 @@ To do that, click on Affinidi logo in sidebar, then click on “Create an accoun
 
 enter your email and the OTP code that you received in your inbox.
 ```
-https://github.com/affinidi/vscode-extension/raw/HEAD/media/docs/create_account.png
+![alt text](https://github.com/affinidi/vscode-extension/raw/HEAD/media/docs/create_account.png "")
 
 Once the account is created, a project named Default Project will be created automatically. As part of it, a digital identity will be created for you – your personal DID.
 
 Initially the Default Project will be set as your Active Project.
+
+![alt text](https://github.com/affinidi/vscode-extension/raw/HEAD/media/docs/default_project.png)
+![alt text](https://github.com/affinidi/vscode-extension/raw/HEAD/media/docs/inactive_projects.png)
+
 
 &nbsp;
 
