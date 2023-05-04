@@ -13,5 +13,21 @@ helps gaming studios attract new customers and
 retain more players, ensuring a more secure and 
 immersive gaming experience for everyone
 
-# Prerequisite
+## Getting started
+
+Setting up the reference app is easy, just follow these steps:  
+1. Clone the repo:
+    ```
+    $ git clone git@github.com:affinidi/reference-app-portable-rep.git
+    $ cd reference-app-portable-rep
+    $ cd use-cases/gaming
+    ```
+2. Install the dependencies:
+    ```
+    $ npm install
+    ```
+3. Create a `.env` file:
+    ```
+    $ cp .env.example .env
+    ```
  
