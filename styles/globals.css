@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  height: 100%;
+  font-size: 8px;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  visibility: inherit;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-size: 2rem;
+  font-family: "Space Grotesk", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #1b1c2e;
+  padding: 0px;
+  box-sizing: border-box;
+  background-repeat: repeat;
+  background-color: hsla(279, 42%, 9%, 1);
+  background-image: url('../assets/images/body-bg.jpg');
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

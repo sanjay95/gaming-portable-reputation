@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: ./
+      target: runner
+    volumes:
+      - .:/app
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_HOST: http://localhost:3000
+      LOG_LEVEL: debug
+      NEXTAUTH_URL: http://localhost:3000
+      AUTH_JWT_SECRET: this-is-very-secret-dont-tell-anyone
+      CLOUD_WALLET_API_URL: https://cloud-wallet-api.prod.affinity-project.org/api
+      AFFINIDI_IAM_API_URL: https://affinidi-iam.apse1.affinidi.com/api
+      VERIFIER_API_URL: https://affinity-verifier.prod.affinity-project.org/api
+      ISSUANCE_API_URL: https://console-vc-issuance.apse1.affinidi.com/api
+      PROJECT_ID: 97d1aafc-e37c-431b-a7c6-42e2a06e4140
+      PROJECT_DID: did:elem:EiAK46D8ZjzKc53SDP1SivesClFjBQNt6gmYHpms2L6jEA
+      API_KEY_HASH: 35f97035de2f0675be6d753db9e49969e4a870eef69cab5c5826280511b54f25
+      BATTLENET_CLIENT_ID: 001bec277fa44a21bd7f32ac14aaa516
+      BATTLENET_CLIENT_SECRET: 6AUP5DO6o0jLILH0bMVWNupmd7Xdxjc5
+      BATTLENET_ISSUER: https://eu.battle.net/oauth
+      BATTLENET_REGION: eu
