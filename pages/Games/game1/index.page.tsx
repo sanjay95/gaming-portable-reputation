@@ -218,7 +218,7 @@ const Game1: FC = () => {
             <div style={{ paddingBottom: "400px" }} className="grid grid-flow-row-dense grid-cols-12">
                 <div className='col-span-6'>
                     <div className="grid grid-flow-row-dense grid-cols-3">
-                        <div>Alias Name: {preferences.nickname} </div>
+                        <div>Alias: {preferences.nickname} </div>
                         <div>Game Level: {reputation.scores.Gamelevel}</div>
                         <div>Hours Played: {reputation.totalPlayedhours}</div>
                         <div className='col-span-3'>
@@ -252,7 +252,7 @@ const Game1: FC = () => {
                             <GameInput
                                 id="GameAlias"
                                 type="string"
-                                label="Game player alias name: "
+                                label="Game player alias: "
                                 onChange={handleAliasChange}
                                 placeholder={preferences.nickname || vcData?.vcs.gamingStudio?.credentialSubject.name}
 

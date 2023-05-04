@@ -288,7 +288,7 @@ const Game2: FC = () => {
             <div style={{ paddingBottom: "400px" }} className="grid grid-flow-row-dense grid-cols-12">
                 <div className='col-span-6'>
                     <div className="grid grid-flow-row-dense grid-cols-3">
-                        <div>Alias Name: {preferences.nickname} </div>
+                        <div>Alias: {preferences.nickname} </div>
                         <div>Game Level: {reputation.scores.Gamelevel}</div>
                         <div>Hours Played: {reputation.totalPlayedhours}</div>
                         <div className='col-span-3'><canvas id='game' style={{ backgroundColor: preferences.themecolor || "black", contentVisibility: isMenuOpen ? "hidden" : "visible" }}>
@@ -310,14 +310,10 @@ const Game2: FC = () => {
 
                     {preferences.nickname && (
                         <>
-                            Your Nick Name:{' '}
-                            <span id='tests'
-                                style={{
-                                    color: preferences?.themecolor || "inherit",
-                                    fontSize: '5rem',
-                                }}>
-                                {preferences.nickname}
-                            </span></>
+                            <div>Alias: <b>{preferences.nickname}</b></div>
+                            <div>Game theme color: <b>{preferences.themecolor}</b></div>
+                            <div>Game Volume: <b>{preferences.gamevolume}%</b></div>
+                        </>
                     )}
                 </div>
             </div>
