@@ -44,47 +44,14 @@ Initially the Default Project will be set as your Active Project.
 ![alt text](https://github.com/affinidi/vscode-extension/raw/HEAD/media/docs/inactive_projects.png)
 
 
+
+Either create a new project or use the default project. 
+To get the project details. click on default project as below.
+
+
+
 &nbsp;
 
-### Authentication:
-
-You will need your email address, and then the code sent to your email to confirm authentication.
-
-To create an account:
-```
-affinidi sign-up
-```
-
-If you already have an account:
-
-```
-affinidi login
-```
-
-### Create or activate a project:
-
-The `create` command creates and activates a project. Follow the prompts to choose a name or add a name directly after the command.
-
-```
-affinidi create project
-```
-
-The `use` command activates an already existing project:
-
-```
-affinidi use project [<project-id>]
-```
-
-You can also simply type this and follow the prompts to choose from a list of existing projects:
-
-```
-affinidi use project
-```
-To see the details of project for API key hash, DID and Project ID 
-
-```
-affinidi show project <project-id>
-```
 Take the values from here to use later in gaming project. 
 
 ---
