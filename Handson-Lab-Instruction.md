@@ -278,9 +278,6 @@ const { vc } = await cloudWalletClient.signCredential(
 ```
 
 
-- Users may wish to play a second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be prompted to import VC based on his logged-in status. If not logged in, the user may log in based on the message displayed on the screen
-- if the user wishes to import VCs and agrees to share with the Screen tennis game, his settings and stats from the first game will be utilized and the second game may accept the stats and offer users to play the game from an advanced level.
-
 </details>
 
 ---
@@ -288,19 +285,23 @@ const { vc } = await cloudWalletClient.signCredential(
 <details>
   <summary> Lab 3 : </summary>
 
-## Change project with modified data issuance and verification
-
-Current game stats just save the Game level and the hours played. Let's Include the scores of the game too in Game stats. 
-
-Please follow the instruction below to enable new data in GameReputation issuance.
-
-### Prepare VC schema 
-
-- Let's add the score to the existing game schema. 
-- add score to game and add to game state 
-- change the unsigned VC 
-  
+## Request credentials to provide a seamless experience
+ - While Still logged in go to the second game [Screen](http://localhost:3000/Games/game2) tennis](http://localhost:3000/Games/game2)
+ - You may play the game here and build your level with the default color profile and - settings 
+ - The second game provides an option to import game reputation, game settings and profile VC if you already have it and use them to provide you a seamless transition from the previous game
+ - once you click the import button following operation starts
+    - A `Share REQUEST Token` for three types of VC is generated 
+      - Studio profile VC
+      - GameSettings VC
+      - Game stats VC
+    - Upon receiving the request token, the application checks if the user has the requested VCs.
+    - Consent is taken from the user to share the available VC for requested VC types if the user has the VC in the wallet.
+    - If user gives consent to share VC, a `Share RESPONSE Token` is generated using the user's wallet credentials. This token is passed to the game.
+    - The game application validates the `RESPONSE` token against the `REQUEST` Token. If the token is valid, it will utilize the data from VC to offer a personalized gaming experience 
 
   </details>
 
   ---
+
+- Users may wish to play a second game [Screen tennis](http://localhost:3000/Games/game2). Here user will be prompted to import VC based on his logged-in status. If not logged in, the user may log in based on the message displayed on the screen
+- if the user wishes to import VCs and agrees to share with the Screen tennis game, his settings and stats from the first game will be utilized and the second game may accept the stats and offer users to play the game from an advanced level.
