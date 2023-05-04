@@ -84,6 +84,7 @@ Please follow [this readme](https://github.com/sanjay95/gaming-portable-reputati
 ---
 <details>
   <summary> Lab 1 : </summary>
+  
 ## use project 
 
 This is a simple web app containing two games.
