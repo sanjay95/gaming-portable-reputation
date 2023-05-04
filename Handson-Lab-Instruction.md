@@ -52,10 +52,7 @@ To get the project details. click on default project as below.
 
 
 
-
-&nbsp;
-
-Take the values from here to use later in gaming project. 
+Take the values  of PROJECT_ID, PROJECT_DID, API_KEY_HASH from here to use later in gaming project. 
 
 ---
 
