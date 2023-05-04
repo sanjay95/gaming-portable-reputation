@@ -18,11 +18,8 @@ const requestSchema = z
         company: z.string(),
         genere: z.string(),
         totalPlayedhours: z.number().optional(),
-        scores: z.object({
-            Gamelevel: z.number().optional(),
-            score: z.number().optional()
-        }).optional()
-
+        gameLevel: z.number().optional(),
+        score: z.number().optional()
     })
     .strict();
 
@@ -73,7 +70,7 @@ const generateGameReputationVc = async (
     return {
         "@context": [
             "https://www.w3.org/2018/credentials/v1",
-            "https://schema.affinidi.com/GameReputationV1-0.jsonld",
+            "https://schema.affinidi.com/GameReputationV1-1.jsonld",
         ],
         id: `claimId:${nanoid()}`,
         type: ["VerifiableCredential", "GameReputation"],

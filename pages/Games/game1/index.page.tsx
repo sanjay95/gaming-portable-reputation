@@ -6,47 +6,15 @@ import { CloseIcon } from 'assets/close'
 import { MenuIcon } from 'assets/menu'
 import { Container, GameInput, Spinner } from 'components'
 // import toast
-import { createCloudWalletAuthenticationHeaders } from 'hooks/useAuthentication'
-import { ModalProps as ReactModalProps } from 'react-responsive-modal'
 import { useRouter } from 'next/router'
 import { useAuth } from 'pages/useAuth'
 import { useStudioVcProfiles } from 'hooks/useVcProfiles'
-import { VerifiableCredential } from 'types/vc'
+import { Preferences, Reputation, VerifiableCredential } from 'types/vc'
 import { GameInputSelect, GameInputSlider } from 'components/Input/GameInput'
 import { SaveGamePreferences } from './components/SaveGamePreferences'
-import { Instructions } from './components/Instructions'
 import { SaveGameStats } from './components/SaveGameStats'
 import { GenerateRequestToken, generateShareResponseToken, retrieveVCForRequestedToken, verifyShareResponseTokenPage } from '../tokenOperations'
 import { stat } from 'fs'
-
-export type ModalProps = {
-    useLocalContainer?: boolean;
-    useRelativePosition?: boolean;
-    title?: string;
-    footer?: React.ReactElement;
-    position?: 'center' | 'rightSide';
-} & ReactModalProps;
-
-export type Preferences = {
-    gamename?: string
-    vcId?: string
-    nickname: string
-    themecolor: string
-    gamevolume: string
-}
-
-export type Reputation = {
-    vcId?: string
-    gamename: string
-    publisher: string
-    company: string
-    genere: string
-    totalPlayedhours: number
-    scores: {
-        Gamelevel: number
-        score: number
-    }
-}
 
 const Game1: FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -72,10 +40,8 @@ const Game1: FC = () => {
         company: '4Vesta',
         genere: 'arcade',
         totalPlayedhours: .2,
-        scores: {
-            Gamelevel: 1,
-            score: 0
-        }
+        score: 0,
+        gameLevel: 1
     })
 
 
@@ -153,7 +119,7 @@ const Game1: FC = () => {
                 }
                 if (statsVC) {
                     console.log('setting stats VC',)
-                    reputation.scores.Gamelevel = statsVC.credentialSubject.scores.Gamelevel
+                    reputation.gameLevel = statsVC.credentialSubject.gameLevel
                     reputation.totalPlayedhours = statsVC.credentialSubject.totalPlayedhours
                     reputation.vcId = statsVC.id
                 }
@@ -201,10 +167,8 @@ const Game1: FC = () => {
                 setReputation((prevState) =>
                 ({
                     ...prevState,
-                    scores: {
-                        Gamelevel: prevState.scores.Gamelevel + 1,
-                        score: 0
-                    },
+                    gameLevel: prevState.gameLevel + 1,
+                    score: 0,
                     totalPlayedhours: (prevState.totalPlayedhours + Math.floor(Math.random() * 2))
 
                 }));
@@ -219,7 +183,7 @@ const Game1: FC = () => {
                 <div className='col-span-6'>
                     <div className="grid grid-flow-row-dense grid-cols-3">
                         <div>Alias: {preferences.nickname} </div>
-                        <div>Game Level: {reputation.scores.Gamelevel}</div>
+                        <div>Game Level: {reputation.gameLevel}</div>
                         <div>Hours Played: {reputation.totalPlayedhours}</div>
                         <div className='col-span-3'>
                             <canvas id='game' style={{ backgroundColor: preferences.themecolor || "black", contentVisibility: isMenuOpen ? "hidden" : "visible" }}>

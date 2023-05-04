@@ -8,46 +8,16 @@ import { CloseIcon } from 'assets/close'
 import { MenuIcon } from 'assets/menu'
 // import toast
 import { createCloudWalletAuthenticationHeaders } from 'hooks/useAuthentication'
-import { ModalProps as ReactModalProps } from 'react-responsive-modal'
-import { verifyShareResponseTokenResult } from '../../../types/verifyShareResponseResult'
+
 import styled from 'styled-components'
 import { promises } from 'dns'
 import { Button, Container, GameInput, Spinner } from 'components'
 import { GenerateRequestToken, generateShareResponseToken, retrieveVCForRequestedToken, verifyShareResponseTokenPage } from '../tokenOperations'
 import { useRouter } from 'next/router'
 import Modal2 from 'components/Modal2/Modal2'
-import { VerifiableCredential } from 'types/vc'
+import { ModalProps, VCShareStateType, VerifiableCredential } from 'types/vc'
 import { useStudioVcProfiles } from 'hooks/useVcProfiles'
-
-export type ModalProps = {
-    useLocalContainer?: boolean;
-    useRelativePosition?: boolean;
-    title?: string;
-    footer?: React.ReactElement;
-    position?: 'center' | 'rightSide';
-} & ReactModalProps;
-
-export type Preferences = {
-    gamename?: string
-    vcId?: string
-    nickname: string
-    themecolor: string
-    gamevolume: string
-}
-
-export type Reputation = {
-    vcId?: string
-    gamename: string
-    publisher: string
-    company: string
-    genere: string
-    totalPlayedhours: number
-    scores: {
-        Gamelevel: number
-        score: number
-    }
-}
-
+import { Preferences, Reputation } from 'types/vc'
 
 export const hasPreferenceVC = async (): Promise<boolean> => {
     try {
@@ -62,12 +32,6 @@ export const hasPreferenceVC = async (): Promise<boolean> => {
     }
 
     return false
-}
-
-
-export type VCShareStateType = {
-    requestToken?: string
-    vcTypesFound?: string[]
 }
 
 const ImportButton: FC<{
@@ -277,10 +241,8 @@ const Game2: FC = () => {
         company: '4Vesta',
         genere: 'arcade',
         totalPlayedhours: .1,
-        scores: {
-            Gamelevel: 1,
-            score: 0
-        }
+        score: 0,
+        gameLevel: 1,
     })
     useEffect(() => {
         const interval = setInterval(() => {
@@ -288,11 +250,9 @@ const Game2: FC = () => {
             if (pongGame?.playing) {
                 setReputation((prevState) =>
                 ({
-                    ...prevState,
-                    scores: {
-                        Gamelevel: prevState.scores.Gamelevel + 1,
-                        score: 0
-                    },
+                    ...prevState,                    
+                    gameLevel: prevState.gameLevel + 1,
+                    score: 0,
                     totalPlayedhours: (prevState.totalPlayedhours + Math.floor(Math.random() * 2))
 
                 }));
@@ -307,7 +267,7 @@ const Game2: FC = () => {
                 <div className='col-span-6'>
                     <div className="grid grid-flow-row-dense grid-cols-3">
                         <div>Alias: {preferences.nickname} </div>
-                        <div>Game Level: {reputation.scores.Gamelevel}</div>
+                        <div>Game Level: {reputation.gameLevel}</div>
                         <div>Hours Played: {reputation.totalPlayedhours}</div>
                         <div className='col-span-3'><canvas id='game' style={{ backgroundColor: preferences.themecolor || "black", contentVisibility: isMenuOpen ? "hidden" : "visible" }}>
                             <div id='unsupported'>
