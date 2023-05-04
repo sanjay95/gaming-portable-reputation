@@ -3,14 +3,16 @@ import { useAuthContext } from 'hooks/useAuthContext';
 import axios from 'axios';
 import * as S from '../Games.styled';
 import { createCloudWalletAuthenticationHeaders } from 'hooks/useAuthentication';
-import { Preferences,Reputation } from '../index.page';
 import { hasPreferenceVC } from 'pages/Games/tokenOperations';
 import { ROUTES } from 'utils';
 import { useRouter } from 'next/router';
+import { Reputation } from 'types/vc';
 
-export const SaveGameStats: FC<{ gamesettings: Reputation; 
-    setIsloading: (setIsloading: boolean) => void }> = ({ gamesettings,setIsloading }) => {
-        console.log(gamesettings);
+export const SaveGameStats: FC<{
+    gamesettings: Reputation;
+    setIsloading: (setIsloading: boolean) => void
+}> = ({ gamesettings, setIsloading }) => {
+    console.log(gamesettings);
     const { authState, setAuthState } = useAuthContext();
     const [showExport, setShowExport] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -32,7 +34,7 @@ export const SaveGameStats: FC<{ gamesettings: Reputation;
                 onClick={(e) => { navigate.push(ROUTES.singIn) }}
                 fullWidth
             >Please sign in to save your stats..
-                  {/* {!isAuthorized ? ('Please sign in to save your settings..'):('Save Game Settings')} */}
+                {/* {!isAuthorized ? ('Please sign in to save your settings..'):('Save Game Settings')} */}
             </S.ButtonWrapper>
 
             </>
@@ -47,14 +49,14 @@ export const SaveGameStats: FC<{ gamesettings: Reputation;
     //     return <div>Settings were already saved!</div>;
     // }
     return (
-        <ExportButton gamesettings={gamesettings} setShowExport={setShowExport} setIsloading={setIsloading}  />
+        <ExportButton gamesettings={gamesettings} setShowExport={setShowExport} setIsloading={setIsloading} />
     );
 };
 const ExportButton: FC<{
     gamesettings: Reputation;
     setShowExport: (showExport: boolean) => void;
     setIsloading: (setIsloading: boolean) => void
-}> = ({ gamesettings, setShowExport,setIsloading }) => {
+}> = ({ gamesettings, setShowExport, setIsloading }) => {
 
     const handleSubmit = async (e: any) => {
         setIsloading(true);
@@ -108,7 +110,7 @@ const ExportButton: FC<{
         // loading={isLoading}
         fullWidth
     >
-       Save current stats
+        Save current stats
     </S.ButtonWrapper>);
 
 };

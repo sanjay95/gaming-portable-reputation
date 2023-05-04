@@ -322,7 +322,7 @@ Pong = {
     Colors: {
       walls:           'white',
       ball:            'white',
-      score:           'white',
+      //LAB2   score:           'white',
       footprint:       '#333',
       predictionGuess: 'yellow',
       predictionExact: 'red'
