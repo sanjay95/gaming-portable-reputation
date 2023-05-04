@@ -33,11 +33,12 @@ export const ProfileLabel = forwardRef<HTMLInputElement, InputProps>(
       </><S.Wrapper direction="column" gap={4} className={className}>
 
           <S.InputWrapper>
-            <S.Input
+            <S.DisabledInput
               //onChange={handleChange}
               data-testid="input"
               $hasIcon={!!icon}
               disabled={true}
+              style={{color: "yellow"}}
               {...props} />
           </S.InputWrapper>
 
