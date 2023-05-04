@@ -444,4 +444,10 @@ const { data: vcs } = await axios<VerifiableCredential[]>(
 
 ## Issue and consume new VC with additional field
 
+- Search for LAB4 in all files in the project 
+- Uncomment the line and remove the LAB4 or keep the LAB4 commented and move commented code to new line
+- Save these changes and browse the games and observe the score field.
+- click on save stats button to save the new reputation with score
+- Import this new reputation on second game 
+
  </details>
