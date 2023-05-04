@@ -4,7 +4,7 @@ This is a ready-to-use reference app that showcases usage of Affinidi API for is
 
 ---
 
-## Pre-Requisite
+## Lab 0 : Pre-Requisite
 
 To run this lab you need to setup the Issuer credentails. 
 To Know more about Issuer, [click here](https://academy.affinidi.com/what-are-verifiable-credentials-79f1846a7b9#:~:text=about%20these%20entities.-,Issuer,-An%20issuer%20is)
@@ -80,7 +80,7 @@ Please follow [this readme](https://github.com/sanjay95/gaming-portable-reputati
 
 ---
 
-## use project 
+## Lab 1: use project 
 
 This is a simple web app containing two games.
 You can play games without login, but stats and settings will not be saved. 
@@ -104,7 +104,7 @@ There will be total three types of Verifiable credentials will be created.
 
 ---
 
-## change project with modified data issuance and verification
+## Lab 2 : change project with modified data issuance and verification
 
 Current game stats just save Game level and no of hours played. 
 Lets Include the scores of game too in Game stats. 
