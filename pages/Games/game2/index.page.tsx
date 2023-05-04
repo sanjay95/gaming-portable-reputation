@@ -15,6 +15,8 @@ import { promises } from 'dns'
 import { Button, Container, Spinner } from 'components'
 import { GenerateRequestToken, generateShareResponseToken, retrieveVCForRequestedToken, verifyShareResponseTokenPage } from '../tokenOperations'
 import { useRouter } from 'next/router'
+import Modal2 from 'components/Modal2/Modal2'
+import { VerifiableCredential } from 'types/vc'
 
 export type ModalProps = {
     useLocalContainer?: boolean;
@@ -44,6 +46,8 @@ export type Reputation = {
         score: number
     }
 }
+
+
 export const hasPreferenceVC = async (): Promise<boolean> => {
     try {
         const response = await axios(`/api/game/has-preferences`, {
@@ -59,27 +63,34 @@ export const hasPreferenceVC = async (): Promise<boolean> => {
     return false
 }
 
+
+export type VCShareStateType = {
+    requestToken?: string
+    vcTypesFound?: string[]
+}
+
 const ImportButton: FC<{
     setPreferences: (preferences: Preferences) => void
     setIsloading: (setIsloading: boolean) => void
 }> = ({ setPreferences, setIsloading }) => {
 
+    const [openModal, setOpenModal] = useState(false);
+    const [data, setData] = useState<VCShareStateType | undefined>();
+    const [message, setMessage] = useState("");
+    const vcTypes = ["AffinidiStudioProfileVC", "GameSettings"];
 
-    const handleSubmit = async () => {
+    const handleShareVC = async (e: any) => {
+        if (!data || !data?.requestToken || !openModal) {
+            return;
+        }
+        setOpenModal(false)
         setIsloading(true)
-        //verifier building share REQUEST token of two VC type, studio and game settings
-        const requesttoken = await GenerateRequestToken(["AffinidiStudioProfileVC", "GameSettings"]);
-
-        //holder retrieving VC for requested toke 
-        const vcs = await retrieveVCForRequestedToken(requesttoken);
-        // prompt to share 
-        //TODO
 
         // holder creating share RESPONSE token 
-        const shareResponseToken = await generateShareResponseToken(requesttoken);
+        const shareResponseToken = await generateShareResponseToken(data.requestToken);
         //Verifier verifying the shared RESPONSE token against the REQUESTED token
 
-        const verifyShareResponseOutPut = await verifyShareResponseTokenPage(requesttoken, shareResponseToken)
+        const verifyShareResponseOutPut = await verifyShareResponseTokenPage(data.requestToken, shareResponseToken)
         //and uses the VC if valid
         if (verifyShareResponseOutPut?.isValid) {
             const preferences = verifyShareResponseOutPut.suppliedCredentials.
@@ -87,14 +98,61 @@ const ImportButton: FC<{
                 .pop();
             if (preferences) {
                 setPreferences(preferences.credentialSubject)
-                setIsloading(false)
             }
         }
-        setIsloading(false);
 
+        setIsloading(false)
+    };
+
+    const handleSubmit = async () => {
+        setIsloading(true)
+        setData(undefined);
+        //verifier building share REQUEST token of two VC type, studio and game settings
+        const reqToken = await GenerateRequestToken(vcTypes);
+
+        //holder retrieving VC for requested toke 
+        const { vcs } = await retrieveVCForRequestedToken(reqToken);
+
+        console.log('vcs', vcs);
+        if (!vcs || vcs.length == 0) {
+            //No VCs found
+            setMessage("We have not found any VCs of type " + vcTypes.join(', '))
+        }
+        else {
+            //Get unique VC types
+            const arr: string[] = vcs.map((v: VerifiableCredential) => v.type.pop()).flat();
+            const uniqueArray = arr.filter((value, index) => arr.indexOf(value) === index);
+
+            setData({
+                requestToken: reqToken,
+                vcTypesFound: uniqueArray
+            });
+        }
+
+        setIsloading(false);
+        setOpenModal(true);
     }
 
-    return <Button onClick={handleSubmit}>Import Preferences...</Button>
+    return (<>
+        <Modal2 onClose={() => setOpenModal(false)} open={openModal} title={data ? "Share VC" : "No Game Profile VCs"}>
+            <div className="grid grid-cols-12 gap-16">
+                <div className='col-span-12'>
+                    {data && <>
+                        <b>Requested VCs </b>
+                        {data.vcTypesFound?.map(vc => <p key={vc} style={{ paddingLeft: '10px' }}>{vc}</p>)}<br />
+                        By clicking 'Allow', you consent to sharing the above VC's.
+                    </>
+                    }
+                    {message}
+                </div>
+                <div className='col-span-2'><Button onClick={(e) => setOpenModal(false)} color="secondary" style={{ color: 'white' }}>
+                    Cancel</Button></div>
+                <div className='col-span-10'>{data && <Button onClick={handleShareVC}>
+                    Allow</Button>}</div>
+            </div>
+        </Modal2>
+        <Button onClick={handleSubmit}>Import Preferences...</Button>
+    </>)
 }
 
 const Import: FC<{
@@ -125,7 +183,7 @@ const Import: FC<{
                 //     fontSize: "15px",
                 //     display: "inline-block"
                 // }}>
-                     <Button onClick={(e)=>(navigate.push(ROUTES.singIn))}>
+                <Button onClick={(e) => (navigate.push(ROUTES.singIn))}>
                     Login With Affinidi Game wallet to sync preferences</Button>
                 // </Link>
             )
@@ -264,7 +322,7 @@ const Game2: FC = () => {
                 </div>
             </div>
 
-            <script src='/js/all.js' type='text/javascript'></script>
+            <script src='/js/all.js' async type='text/javascript'></script>
 
         </S.Container>
 
