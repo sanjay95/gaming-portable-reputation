@@ -90,23 +90,22 @@ Setting up the reference app is easy, just follow these steps:
 <details>
   <summary> Lab 1 : </summary>
 
-## use project to Issue and store Verifiable Credentails 
+## Use project to Issue and store Verifiable Credentails 
 
-This is a simple web app with user resgitration and two simplae games.
-You can play games without login, but stats and settings will not be saved. 
+This is a simple web app with user resgitration and two simple games.
+You can play games without login, but game stats and settings will not be saved. 
 
-To persist the changes and create portable reputation. user need to login as game player. 
 
-There will be total three types of Verifiable credentials will be created. 
+There will be total three types of Verifiable credentials created. 
 
 1. Studio Profile
 2. GameSetting
 3. GameStats
 
-### creating studio profile and Issuing ProfileVC
+### Creating studio profile and Issuing ProfileVC
 
 - browse the application at http://localhost:3000.
-- Click on JOIN OUR TEAM button 
+- click on JOIN OUR TEAM button 
 - enter email and provide the OTP
 - first login will prompt to complete profile (here Studio profile VC will be issued to logged in user wallet)
 
