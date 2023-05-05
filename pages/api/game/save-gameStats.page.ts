@@ -16,7 +16,7 @@ const requestSchema = z
     gamename: z.string(),
     publisher: z.string(),
     company: z.string(),
-    genere: z.string(),
+    genre: z.string(),
     totalPlayedhours: z.number().optional(),
     gameLevel: z.number().optional(),
     //LAB4      score: z.number().optional()
@@ -68,8 +68,8 @@ const generateGameReputationVc = async (
   return {
     '@context': [
       'https://www.w3.org/2018/credentials/v1',
-      'https://schema.affinidi.com/GameReputationV1-2.jsonld',
-      //LAB4     "https://schema.affinidi.com/GameReputationV1-1.jsonld",
+      'https://schema.affinidi.com/GameReputationV1-3.jsonld',
+      //LAB4     "https://schema.affinidi.com/GameReputationV1-4.jsonld",
     ],
     id: `claimId:${nanoid()}`,
     type: ['VerifiableCredential', 'GameReputation'],
@@ -80,7 +80,8 @@ const generateGameReputationVc = async (
     credentialSubject: stats,
     credentialSchema: {
       type: 'JsonSchemaValidator2018',
-      id: 'https://schema.affinidi.com/GameReputationV1-0.json',
+      id: 'https://schema.affinidi.com/GameReputationV1-3.json',
+      //LAB4 'https://schema.affinidi.com/GameReputationV1-4.json',
     },
   }
 }

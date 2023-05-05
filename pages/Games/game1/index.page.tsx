@@ -38,7 +38,7 @@ const Game1: FC = () => {
         gamename: 'boardTennis',
         publisher: 'affGames',
         company: '4Vesta',
-        genere: 'arcade',
+        genre: 'arcade',
         totalPlayedhours: .2,
         //LAB4   score: 0,
         gameLevel: 1

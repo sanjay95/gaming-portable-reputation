@@ -34,7 +34,7 @@ export type Reputation = {
     gamename: string
     publisher: string
     company: string
-    genere: string
+    genre: string
     totalPlayedhours: number
     //LAB4       score: number
     gameLevel: number

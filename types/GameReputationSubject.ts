@@ -2,7 +2,7 @@ export interface GameReputationSubject {
   gamename: string
   publisher: string
   company: string
-  genere: string
+  genre: string
   totalPlayedhours: number
   gameLevel: number
   //LAB4     score: number
