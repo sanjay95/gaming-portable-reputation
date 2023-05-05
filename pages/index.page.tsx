@@ -98,7 +98,7 @@ const Home: FC = () => {
               lineHeight: 1,
             }}
           >
-            Legendry Games Made For{' '}
+            Legendary Games Made For{' '}
             <br
               style={{ margin: '0px', padding: '0px', boxSizing: 'border-box' }}
             />{' '}
