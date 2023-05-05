@@ -81,7 +81,7 @@ const generateGameReputationVc = async (
     credentialSchema: {
       type: 'JsonSchemaValidator2018',
       id: 'https://schema.affinidi.com/GameReputationV1-3.json',
-      //LAB4 'https://schema.affinidi.com/GameReputationV1-4.json',
+      //LAB4 id:'https://schema.affinidi.com/GameReputationV1-4.json',
     },
   }
 }

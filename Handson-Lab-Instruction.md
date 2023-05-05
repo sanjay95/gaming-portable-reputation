@@ -251,8 +251,12 @@ const preferenceVc = await generatePreferencesVc(
   #### `getting access token of Project's wallet to sign VC `
 
 ```typescript 
+
 const {
-            wallet: { accessToken: cloudWalletAccessToken },
+      wallet: { accessToken: cloudWalletAccessToken },
+    } = await iamClient.authenticateCloudWallet({ did: projectDid ?? '' })
+
+
 ```
    #### `signing VC using the project's credentials`   
      
