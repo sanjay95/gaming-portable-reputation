@@ -55,6 +55,7 @@ const Home: FC = () => {
 
   const redirect = (e: any, path: string) => {
     e.preventDefault()
+    if(isAuthorized) return
     navigate.push(path)
     return false
   }
