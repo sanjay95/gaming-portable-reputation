@@ -27,7 +27,7 @@ const Game1: FC = () => {
     const [isloading, setIsloading] = useState<boolean>(false)
     const { authState, setAuthState } = useAuthContext()
     const [preferences, setPreferences] = useState<Preferences>({
-        gamename: 'Game1',
+        gamename: 'BoardTennis',
         vcId: '',
         nickname: '',
         themecolor: '',
@@ -35,7 +35,7 @@ const Game1: FC = () => {
     })
     const [reputation, setReputation] = useState<Reputation>({
         vcId: '',
-        gamename: 'boardTennis',
+        gamename: 'BoardTennis',
         publisher: 'affGames',
         company: '4Vesta',
         genre: 'arcade',
