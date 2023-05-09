@@ -25,7 +25,7 @@ async function handler(
   req: NextApiRequest,
   res: NextApiResponse<HandlerResponse>
 ) {
-  const battleNetAccessToken = await authenticateBattleNet(req)
+  const battleNetAccessToken = await authenticateBattleNet(req, res)
 
   const { holderDid } = requestSchema.parse(req.body)
 
