@@ -30,8 +30,7 @@ export default function App({
 
   return (
     <ThemeProvider theme={theme}>
-     
-      {<QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <SessionProvider session={session}>
             <AuthRedirect>
@@ -40,13 +39,10 @@ export default function App({
             </AuthRedirect>
           </SessionProvider>
         </AuthProvider>
-
         <DataProviderErrorNotification />
         <ToastsContainer />
       </QueryClientProvider>
-    
-      }
-    
+      
     </ThemeProvider>
   )
 }
