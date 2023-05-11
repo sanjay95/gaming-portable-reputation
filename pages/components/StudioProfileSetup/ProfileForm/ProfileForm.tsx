@@ -13,7 +13,7 @@ type ProfileFormProps = {
   setUserAge(age: string): void;
   setUseCountry(country: string): void;
   setUserCity(city: string): void;
-  setUserName(dob:string):void
+  setUserName(dob: string): void
   disabled: boolean;
   isLoading: boolean;
   error: ErrorResponse | null;
@@ -36,7 +36,9 @@ export const ProfileForm: FC<ProfileFormProps> = ({
   isLoading,
 }) => {
 
-  const [email, setEmail]= useState( localStorage.getItem('signInUsername'))
+  const [email, setEmail] = useState(
+    typeof window !== 'undefined' && localStorage.getItem('signInUsername') || ''
+  )
   const handleEmailChange = (value: string) => {
     if (inputError) {
       setInputError(null)
@@ -54,7 +56,7 @@ export const ProfileForm: FC<ProfileFormProps> = ({
       setInputError(null)
     }
     setUserAge(value)
-    setUserEmail( email?.replace(/['"]+/g, '') as string)
+    setUserEmail(email?.replace(/['"]+/g, '') as string)
   }
   const handleCountryChange = (value: string) => {
     if (inputError) {
@@ -67,14 +69,14 @@ export const ProfileForm: FC<ProfileFormProps> = ({
       setInputError(null)
     }
     setUserCity(value)
-    setUserEmail( email?.replace(/['"]+/g, '') as string)
+    setUserEmail(email?.replace(/['"]+/g, '') as string)
   }
   const handleNameChange = (value: string) => {
     if (inputError) {
       setInputError(null)
     }
     setUserName(value)
-    setUserEmail( email?.replace(/['"]+/g, '') as string)
+    setUserEmail(email?.replace(/['"]+/g, '') as string)
   }
 
   return (
@@ -90,9 +92,9 @@ export const ProfileForm: FC<ProfileFormProps> = ({
               type="email"
               label="Email address"
               placeholder={email?.replace(/['"]+/g, '') as string}
-              //onChange={handleEmailChange}
-              // hasError={Boolean(inputError || error?.message)}
-              // helpText={inputError || error?.message}
+            //onChange={handleEmailChange}
+            // hasError={Boolean(inputError || error?.message)}
+            // helpText={inputError || error?.message}
             />
             {/* <ProfileInput
               id="mobile"
