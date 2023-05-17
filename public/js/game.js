@@ -95,7 +95,7 @@ Game = {
 
     try {
       var re      = (key == "ie") ? "msie (\\d)" : key + "\\/(\\d\\.\\d)"
-      var matches = ua.match(new RegExp(re, "i"));
+      var matches = ua.match(new RegExp(((key == "ie") ? "msie (\\d)" : key + "\\/(\\d\\.\\d)"), "i"));
       var version = matches ? parseFloat(matches[1]) : null;
     } catch (e) {}
 
